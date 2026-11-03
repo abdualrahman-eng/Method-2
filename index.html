@@ -1,0 +1,417 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>الدرس التفاعلي الأول: قارة أفريقيا</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--y:#FFC82C;--o:#FF6B35;--ink:#1E293B;--g:#10B981;--b:#0EA5E9;color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:inherit}
+html{height:100%;scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100%;padding:12px;display:grid;place-items:center;font-family:"Noto Sans Arabic",Tahoma,Arial,sans-serif;font-size:18px;line-height:1.7;color:var(--ink);background-color:var(--y);background-image:linear-gradient(rgba(30,41,59,.12) 1px,transparent 1px),linear-gradient(90deg,rgba(30,41,59,.12) 1px,transparent 1px);background-size:32px 32px}
+.stage{width:min(100%,calc((100vh - 48px)*16/9),1120px);background:#fff;border:4px solid var(--ink);box-shadow:10px 10px 0 var(--ink);display:flex;flex-direction:column;min-height:calc(100vh - 40px)}
+@media(min-width:900px) and (min-height:560px){.stage{aspect-ratio:16/9;min-height:0}}
+.top{background:var(--o);border-bottom:4px solid var(--ink);display:flex;align-items:center;gap:12px;padding:6px 14px;font-weight:800}
+.dots{display:flex;gap:6px}.dots i{width:14px;height:14px;border-radius:50%;background:#fff;border:2px solid var(--ink)}
+.top .ttl{flex:1;font-size:1rem}.pts{background:#fff;border:3px solid var(--ink);padding:0 10px;font-size:.95rem}
+.prog{display:flex;gap:3px;padding:8px 14px 0}.prog i{flex:1;height:10px;background:#E2E8F0;border:2px solid var(--ink)}.prog i.d{background:var(--g)}.prog i.c{background:var(--o)}
+.step{padding:2px 14px;font-size:.85rem;font-weight:700}
+main{flex:1;overflow:auto;padding:10px 20px 18px}
+h1{font-size:2.1rem;line-height:1.3;margin:.2em 0}h2{font-size:1.5rem;margin:.2em 0 .4em}h3{font-size:1.1rem;margin:.2em 0}
+p{margin:.3em 0}.sub{font-weight:500;color:#334155}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:start}
+.box{border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);padding:10px 14px;background:#fff}
+.box.b{background:#E0F2FE}.box.gr{background:#D1FAE5}.box.yl{background:#FEF3C7}
+.btn,.chip,.opt{font:inherit;font-weight:700;color:var(--ink);background:#fff;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);padding:.3em 1em;min-height:44px;cursor:pointer;border-radius:0}
+.btn:active,.chip:active,.opt:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--ink)}
+.btn.pri{background:var(--g)}.btn:disabled,.opt:disabled{opacity:.5;cursor:default}
+.sel{background:var(--y)}.good{background:#A7F3D0}.bad{background:#FECACA}
+.opts,.chips{display:flex;flex-wrap:wrap;gap:12px;margin:10px 0}.opts .opt{flex:1 1 40%;text-align:center}
+.q{font-size:1.2rem;font-weight:700;margin:.3em 0}
+.fb{border:3px solid var(--ink);padding:6px 12px;margin-top:10px}.fb.ok{background:#D1FAE5}.fb.hint{background:#FEF3C7}.fb.rev{background:#E0F2FE}
+:focus-visible{outline:4px solid var(--b);outline-offset:2px}
+.nav{display:flex;flex-wrap:wrap;gap:10px;padding:10px 14px;border-top:4px solid var(--ink);background:#F8FAFC}.nav .sp{flex:1}
+svg.map{width:100%;height:auto;border:3px solid var(--ink);background:#E0F2FE;display:block}
+.z{cursor:pointer}.z circle{fill:rgba(255,255,255,.35);stroke:var(--ink);stroke-width:2;stroke-dasharray:5 4}.z:hover circle{fill:rgba(255,200,44,.7)}
+.lbl{font:700 14px "Noto Sans Arabic",Tahoma,sans-serif;fill:var(--ink);paint-order:stroke;stroke:#fff;stroke-width:4px}
+ul.t{margin:.3em 0;padding-inline-start:1.3em}ul.t li{margin:.2em 0}
+.card{display:block;width:100%;text-align:start}.card.open{background:#FEF3C7}
+.tl{display:flex;justify-content:space-between;position:relative;margin:14px 0}.tl::before{content:"";position:absolute;inset-inline:6%;top:26px;border-top:4px solid var(--ink)}
+.tl .chip{position:relative;flex:1;margin:0 6px}
+.col3{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.slot{min-height:44px;margin-top:6px}.slot span{display:block;background:#D1FAE5;border:2px solid var(--ink);padding:2px 8px;margin:4px 0;font-size:.9rem}
+.big{font-size:2.6rem;font-weight:800}
+.bdg{display:inline-block;background:var(--y);border:4px solid var(--ink);box-shadow:6px 6px 0 var(--ink);padding:6px 20px;font-weight:800;font-size:1.4rem;margin:8px 0}
+textarea{width:100%;font:inherit;border:3px solid var(--ink);padding:8px;min-height:90px;border-radius:0}
+@media(max-width:760px){body{font-size:16px;padding:6px}.cols,.col3{grid-template-columns:1fr}h1{font-size:1.6rem}main{padding:8px 12px 16px}.stage{box-shadow:6px 6px 0 var(--ink)}.opts .opt{flex-basis:100%}}
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+
+/* ===== أنيميشن وتفاعلات ===== */
+@keyframes inn{from{opacity:0;transform:translateX(-26px) rotateY(8deg)}to{opacity:1;transform:none}}
+@keyframes pop{0%{transform:scale(1)}40%{transform:scale(1.12) rotate(-2deg)}100%{transform:scale(1)}}
+@keyframes shake{0%,100%{transform:none}20%{transform:translateX(-8px)}40%{transform:translateX(8px)}60%{transform:translateX(-5px)}80%{transform:translateX(5px)}}
+@keyframes pulse{0%{transform:scale(1);opacity:1}70%{transform:scale(1.35);opacity:.3}100%{transform:scale(1);opacity:1}}
+@keyframes flip{from{transform:perspective(600px) rotateX(-90deg)}to{transform:perspective(600px) rotateX(0)}}
+@keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
+@keyframes talk{0%,100%{transform:scaleY(.4)}50%{transform:scaleY(1.6)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+@keyframes shine{0%{background-position:-200% 0}100%{background-position:200% 0}}
+main.in{animation:inn .45s ease-out}
+.opt,.chip,.btn{transition:transform .12s,box-shadow .12s,background .2s}
+.opt:not(:disabled):hover,.chip:not(:disabled):hover,.btn:not(:disabled):hover{transform:translate(-2px,-2px);box-shadow:6px 6px 0 var(--ink)}
+.opt.good,.chip.good{animation:pop .5s}.opt.bad{animation:shake .4s}
+.card.open{animation:flip .5s ease-out;transform-origin:top}
+.box{transition:transform .2s}.box:hover{transform:perspective(700px) rotateY(-3deg) rotateX(2deg)}
+.z>circle:first-child{animation:pulse 1.8s infinite;transform-box:fill-box;transform-origin:center}
+svg.map path,svg.map line,svg.map ellipse{animation:fadeIn .8s}
+.pts.bump{animation:pop .5s}
+.bdg{background:linear-gradient(110deg,var(--y) 30%,#fff7c2 50%,var(--y) 70%) 0 0/200% 100%;animation:shine 2.5s linear infinite}
+#globe{border:3px solid var(--ink);background:radial-gradient(circle at 50% 40%,#1e3a5f,#0b1630);display:grid;place-items:center;min-height:240px;cursor:grab;touch-action:pan-y;color:#fff;text-align:center}
+#globe canvas{max-width:100%;height:auto;display:block}
+.guide{display:flex;align-items:center;gap:10px;padding:4px 14px;border-top:4px solid var(--ink);background:#FEF3C7;min-height:76px}
+.guide svg{width:64px;height:64px;flex:none}.ib .bob{animation:bob 2.2s ease-in-out infinite}
+.ib .mouth{transform-box:fill-box;transform-origin:center}.ib.sp .mouth{animation:talk .25s infinite}
+.bub{position:relative;flex:1;background:#fff;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);padding:2px 12px;font-weight:700;font-size:.95rem;line-height:1.5}
+.bub::before{content:"";position:absolute;inset-inline-start:-13px;top:50%;margin-top:-8px;border:8px solid transparent;border-inline-end-color:var(--ink)}
+.gname{font-size:.75rem;color:var(--o)}
+.snd{font:inherit;background:#fff;border:3px solid var(--ink);padding:0 8px;cursor:pointer;min-height:28px}
+#cf{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:50}
+@media(prefers-reduced-motion:reduce){*{animation:none!important}}
+
+#gate,#dash{position:fixed;inset:0;z-index:40;overflow:auto;padding:16px;background:transparent}
+#gate{display:grid;place-items:center}#gate[hidden],#dash[hidden]{display:none}
+.gb{width:min(100%,560px);background:#fff;border:4px solid var(--ink);box-shadow:10px 10px 0 var(--ink);padding:18px 22px;text-align:center;animation:inn .45s}
+.gb .btn.big{display:block;width:100%;margin:12px 0;font-size:1.3rem;padding:.5em}
+.gb input,.dc input,.dc select,.dc textarea{font:inherit;width:100%;border:3px solid var(--ink);padding:6px 10px;margin:6px 0;border-radius:0}
+.err{background:#FECACA;border:3px solid var(--ink);padding:4px 10px;margin:8px 0}
+.dc{max-width:1000px;margin:0 auto;background:#fff;border:4px solid var(--ink);box-shadow:10px 10px 0 var(--ink);padding:14px 20px}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:10px 0}.stats .box .big{font-size:2rem}
+table.tb{width:100%;border-collapse:collapse;margin:8px 0}.tb th,.tb td{border:2px solid var(--ink);padding:3px 8px;text-align:start}.tb th{background:var(--y)}
+.qe{border:3px solid var(--ink);padding:6px 10px;margin:8px 0;background:#F8FAFC}.qe.r,.qe .r{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+
+/* ===== خلفية جغرافية متحركة ===== */
+.stage{position:relative;z-index:1;background:rgba(255,255,255,.93)}
+body:has(#gate:not([hidden])) .stage,body:has(#dash:not([hidden])) .stage{visibility:hidden}
+#bg{position:fixed;inset:0;width:100%;height:100%;z-index:0;pointer-events:none}
+#bg .ln{fill:none;stroke:#1E293B;stroke-width:2;opacity:.28}
+#bg .mer{transform-origin:0 0;animation:mer 26s linear infinite}
+@keyframes mer{0%{transform:scaleX(1)}50%{transform:scaleX(-1)}100%{transform:scaleX(1)}}
+#bg .swing{transform-origin:0 0;animation:swing 6s ease-in-out infinite alternate}
+@keyframes swing{from{transform:rotate(-22deg)}to{transform:rotate(26deg)}}
+#bg .route{fill:none;stroke:#FF6B35;stroke-width:4;stroke-dasharray:6 16;stroke-linecap:round;opacity:.55;animation:march 2.4s linear infinite}
+@keyframes march{to{stroke-dashoffset:-44}}
+#bg .cl{fill:#fff;opacity:.6;animation:drift var(--t) linear infinite;animation-delay:var(--dl)}
+@keyframes drift{from{transform:translate(-320px,var(--y))}to{transform:translate(1900px,var(--y))}}
+#bg .pin{fill:#FF6B35;stroke:#1E293B;stroke-width:2}
+#bg .ring{fill:none;stroke:#FF6B35;stroke-width:3;transform-box:fill-box;transform-origin:center;animation:ping 2.4s ease-out infinite;animation-delay:var(--dl)}
+@keyframes ping{0%{transform:scale(.6);opacity:.9}100%{transform:scale(3);opacity:0}}
+#bg .wv{fill:none;stroke:#0EA5E9;stroke-width:5;opacity:.45;animation:wave var(--t) linear infinite}
+@keyframes wave{to{transform:translateX(-200px)}}
+#bg text{font-family:"Noto Sans Arabic",Tahoma,sans-serif;font-weight:800;fill:#1E293B;opacity:.4}
+#vh{position:fixed;inset-inline:12px;bottom:12px;z-index:70;max-width:520px;margin-inline:auto;background:#FEF3C7;border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink);padding:6px 14px;font-weight:700;font-size:.9rem}#vh[hidden]{display:none}
+/* ===== شرح الموقع ===== */
+@keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+#help{position:fixed;inset:0;z-index:60;background:rgba(30,41,59,.7);display:grid;place-items:center;padding:14px;overflow:auto}#help[hidden]{display:none}
+.hb{width:min(100%,660px);max-height:92vh;overflow:auto;background:#fff;border:4px solid var(--ink);box-shadow:10px 10px 0 var(--ink);padding:14px 20px;animation:inn .35s}
+.hs{display:flex;gap:12px;align-items:flex-start;margin:10px 0;animation:fadeUp .5s backwards;animation-delay:var(--d)}
+.hn{flex:none;width:38px;height:38px;border:3px solid var(--ink);background:var(--y);display:grid;place-items:center;font-weight:800;border-radius:50%}
+.hs b{display:block}.hs span{font-weight:500;color:#334155}
+</style>
+</head>
+<body>
+<svg id="bg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+<defs><path id="rt1" d="M-80 700C250 520 450 780 800 610S1350 430 1700 570"/><path id="rt2" d="M-80 210C300 110 500 330 900 230S1400 90 1700 200"/></defs>
+<g transform="translate(260 640)"><circle class="ln" r="230"/><path class="ln" d="M-230 0H230M-212 90H212M-212 -90H212M-185 -140H185M-185 140H185"/>
+<ellipse class="ln mer" rx="230" ry="230"/><ellipse class="ln mer" rx="230" ry="230" style="animation-delay:-4.3s"/><ellipse class="ln mer" rx="230" ry="230" style="animation-delay:-8.6s"/><ellipse class="ln mer" rx="230" ry="230" style="animation-delay:-13s"/><ellipse class="ln mer" rx="230" ry="230" style="animation-delay:-17.3s"/><ellipse class="ln mer" rx="230" ry="230" style="animation-delay:-21.6s"/></g>
+<g transform="translate(1400 170)"><circle class="ln" r="95"/><circle class="ln" r="78" stroke-dasharray="3 7"/>
+<g class="swing"><path d="M0-82L13-13L82 0L13 13L0 82L-13 13L-82 0L-13-13Z" fill="#FF6B35" opacity=".35" stroke="#1E293B" stroke-width="2"/><path d="M0-82L13-13L-13-13Z" fill="#1E293B" opacity=".6"/></g>
+<text x="0" y="-104" text-anchor="middle" font-size="22">ش</text><text x="0" y="128" text-anchor="middle" font-size="22">ج</text><text x="110" y="8" text-anchor="middle" font-size="22">ق</text><text x="-110" y="8" text-anchor="middle" font-size="22">غ</text></g>
+<path class="route" d="M-80 700C250 520 450 780 800 610S1350 430 1700 570"/><path class="route" d="M-80 210C300 110 500 330 900 230S1400 90 1700 200"/>
+<text font-size="40" style="opacity:1">⛵<animateMotion dur="38s" repeatCount="indefinite" rotate="0"><mpath href="#rt1"/></animateMotion></text>
+<text font-size="40" style="opacity:1">🐪<animateMotion dur="46s" repeatCount="indefinite" rotate="0"><mpath href="#rt2"/></animateMotion></text>
+<g><circle class="ring" cx="800" cy="610" r="10" style="--dl:0s"/><circle class="pin" cx="800" cy="610" r="8"/><circle class="ring" cx="900" cy="230" r="10" style="--dl:-.8s"/><circle class="pin" cx="900" cy="230" r="8"/><circle class="ring" cx="1250" cy="480" r="10" style="--dl:-1.6s"/><circle class="pin" cx="1250" cy="480" r="8"/><circle class="ring" cx="420" cy="175" r="10" style="--dl:-2.2s"/><circle class="pin" cx="420" cy="175" r="8"/></g>
+<g class="cl" style="--t:110s;--dl:0s;--y:90px"><path d="M0 40a30 30 0 0 1 55-12a35 35 0 0 1 65 10a25 25 0 0 1-5 50H15A25 25 0 0 1 0 40z"/></g>
+<g class="cl" style="--t:150s;--dl:-60s;--y:330px"><path d="M0 40a30 30 0 0 1 55-12a35 35 0 0 1 65 10a25 25 0 0 1-5 50H15A25 25 0 0 1 0 40z"/></g>
+<g class="cl" style="--t:130s;--dl:-95s;--y:520px"><path d="M0 40a30 30 0 0 1 55-12a35 35 0 0 1 65 10a25 25 0 0 1-5 50H15A25 25 0 0 1 0 40z"/></g>
+<path class="wv" style="--t:7s" d="M0 862 q 50 -26 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0"/><path class="wv" style="--t:11s;opacity:.28" d="M-100 880 q 50 -22 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0 t 100 0"/>
+</svg>
+<div id="vh" hidden role="status">🔇 لم نجد صوتًا عربيًا على جهازك. ثبّت صوتًا عربيًا (Text-to-speech) من إعدادات الجهاز، أو افتح الصفحة من Chrome وجهازك متصل بالإنترنت.</div>
+<div id="help" hidden role="dialog" aria-modal="true" aria-labelledby="ht"></div>
+<div class="stage" id="stage">
+ <div class="top"><div class="dots"><i></i><i></i><i></i></div><div class="ttl">الدراسات الاجتماعية · الصف الأول الإعدادي</div><button class="snd" id="out" hidden>خروج</button><button class="snd" id="hp" data-h="student" aria-label="شرح الموقع">❓ شرح</button><button class="snd" id="snd" aria-label="الصوت">🔊</button><div class="pts" id="pts"></div></div>
+ <div class="prog" id="prog" aria-hidden="true"></div><div class="step" id="step" aria-live="polite"></div>
+ <main id="main" tabindex="-1"></main>
+ <div class="guide"><svg class="ib" id="ib" viewBox="0 0 60 60" aria-hidden="true"><path d="M53 20v40" stroke="#92400E" stroke-width="3"/><g class="bob"><path d="M10 60c0-14 8-22 20-22s20 8 20 22z" fill="#0EA5E9" stroke="#1E293B" stroke-width="2.5"/><circle cx="30" cy="28" r="12" fill="#F6C89F" stroke="#1E293B" stroke-width="2.5"/><path d="M19 30q11 19 22 0q-3 9-11 10q-8-1-11-10z" fill="#1E293B"/><ellipse cx="30" cy="14" rx="16" ry="9" fill="#fff" stroke="#1E293B" stroke-width="2.5"/><path d="M15 18q15 7 30 0" stroke="#FF6B35" stroke-width="3.5" fill="none"/><circle cx="25" cy="27" r="1.7" fill="#1E293B"/><circle cx="35" cy="27" r="1.7" fill="#1E293B"/><ellipse class="mouth" cx="30" cy="34" rx="3" ry="1.6" fill="#fff"/></g></svg><div class="bub" aria-live="polite"><div class="gname">ابن بطوطة · مرشدك</div><span id="gtxt"></span></div></div>
+ <nav class="nav" aria-label="التنقل">
+  <button class="btn" data-a="prev" id="bPrev">السابق</button>
+  <button class="btn" data-a="home">الرئيسية</button>
+  <button class="btn" data-a="reset" id="bReset">إعادة النشاط</button>
+  <span class="sp"></span>
+  <button class="btn pri" data-a="next" id="bNext">التالي</button>
+ </nav>
+</div>
+<script>
+/* ===== البيانات (عدّل الأرقام والنصوص من هنا) ===== */
+const D={
+ title:"قارة أفريقيا", area:"30.4", countries:54, biggest:"الجزائر",
+ lat:"37° شمالًا و34° جنوبًا", lon:"17° غربًا و51° شرقًا", ptsMcq:10, ptsMatch:15,
+ goals:["أن تحدد أفريقيا على خريطة العالم وتذكر القارات والمسطحات المائية المحيطة بها.","أن تصف موقعها الجغرافي والفلكي وصفًا عامًا.","أن توضح أهميتها الاستراتيجية والاقتصادية والحضارية.","أن تحدد مصر على الخريطة وتشرح أهمية موقعها.","أن ترتب أدوار المصريين القدماء والعرب والأوروبيين في الاستكشاف.","أن تستنتج العلاقة بين الموقع وأهمية القارة وطرق التجارة."],
+ path:[["تمهيد","دقيقة"],["استكشاف الخريطة","3 دقائق"],["تثبيت الموقع","دقيقتان"],["اكتشاف الأهمية","3 دقائق"],["رحلات الاستكشاف","4 دقائق"],["تقويم ختامي","3 دقائق"]],
+ concepts:[["الموقع الجغرافي","مكان القارة بالنسبة إلى القارات والمسطحات المائية المحيطة بها.","مثال: يحد أفريقيا البحر المتوسط شمالًا."],["الموقع الفلكي","مكان القارة بالنسبة إلى دوائر العرض وخطوط الطول.","مثال: تمتد أفريقيا بين دائرتي عرض 37° شمالًا و34° جنوبًا."],["الدول الحبيسة","دول لا تطل على بحر أو محيط.","أي أنها لا تملك ساحلًا على مسطح مائي."],["الكشوف الجغرافية","رحلات أسهمت في التعرف إلى مناطق وطرق ومصادر طبيعية جديدة.","مثال: وصول بارتولوميو دياز إلى رأس الرجاء الصالح."]],
+ seas:[["atl","المحيط الأطلسي","في غرب القارة.",110,210],["ind","المحيط الهندي","في شرق القارة.",560,290],["med","البحر المتوسط","يفصل أفريقيا عن أوروبا شمالًا.",330,57],["red","البحر الأحمر","في الشرق، قرب الركن الشمالي الشرقي للقارة.",497,140],["eur","أوروبا","قارة تقع شمال البحر المتوسط.",300,18],["asi","آسيا","تجاور أفريقيا ناحية الشمال الشرقي.",585,90]],
+ imp:[["تطل على مضيق جبل طارق وباب المندب وقناة السويس","s"],["تتوسط قارات العالم القديم","s"],["تنوع أقاليمها ومناخها","e"],["تنوع الموارد والمحاصيل الزراعية","e"],["قيام الحضارة المصرية القديمة","h"],["ارتباط شعوبها بالتواصل والتجارة","h"]],
+ cats:{s:["استراتيجية","تتوسط قارات العالم القديم وتطل على ممرات مائية مهمة، فتربط طرق الملاحة والتجارة."],e:["اقتصادية","اتساع القارة وتنوع أقاليمها ومناخها يساعدان على تنوع الموارد والأنشطة والمحاصيل."],h:["حضارية","شهدت قيام حضارات قديمة أبرزها الحضارة المصرية، وارتبطت شعوبها بالتواصل والتجارة."]},
+ tl:[["المصريون","المصريون القدماء ومحمد علي باشا","عرف المصريون أجزاء من القارة منذ العصور القديمة، وتحركت بعثاتهم جنوبًا عبر وادي النيل إلى النوبة والسودان. وفي العصر الحديث أرسل محمد علي باشا بعثات للبحث عن منابع النيل، ثم واصل الخديوي إسماعيل الاهتمام بالاستكشاف؛ وأسهمت الرحلات في التعرف إلى مجرى النهر ورسم خرائط لمناطقه."],["العرب","الرحالة والتجار العرب","أسهم الرحالة والتجار العرب في التعرف إلى مناطق واسعة من شمال أفريقيا وغربها وشرقها، ومن أمثلتهم ابن بطوطة. وزادت طرق التجارة والانتشار الإسلامي الاتصال بين مناطق القارة."],["الأوروبيون","الرحلات الأوروبية","نشطت رحلات الاستكشاف الأوروبية، ولا سيما البرتغالية، على سواحل أفريقيا. وصل بارتولوميو دياز إلى رأس الرجاء الصالح، ثم دار فاسكو دا جاما حول جنوب القارة في طريقه إلى الهند سنة 1498م، وتتابعت بعدها رحلات أوروبية أخرى."]],
+ who:["المصريون / محمد علي باشا","العرب / ابن بطوطة","بارتولوميو دياز","فاسكو دا جاما"],
+ match:[["بعثات البحث عن منابع النيل",0,"أُرسلت هذه البعثات في العصر الحديث.","أرسل محمد علي باشا بعثات للبحث عن منابع النيل."],["رحلات ابن بطوطة",1,"فكّر في الرحالة والتجار العرب.","رحلات ابن بطوطة من الرحلات العربية التي أسهمت في التعرف إلى مناطق أفريقية."],["رأس الرجاء الصالح",2,"هو أول من وصل إليه في الرحلات البرتغالية.","وصل بارتولوميو دياز إلى رأس الرجاء الصالح."],["طريق الهند سنة 1498م",3,"دار حول جنوب القارة في طريقه إلى الهند.","دار فاسكو دا جاما حول جنوب أفريقيا في طريق الهند سنة 1498م."]],
+ quiz:[
+ {t:"m",q:"ما القارة التي تُعد ثاني أكبر قارات العالم مساحة؟",o:["أوروبا","أفريقيا","أستراليا","أمريكا الجنوبية"],a:1,h:"تأتي بعد آسيا مباشرة في المساحة.",e:"تأتي أفريقيا ثانية بعد آسيا من حيث المساحة."},
+ {t:"m",q:"أي المسطحات المائية يحد أفريقيا غربًا؟",o:["المحيط الأطلسي","المحيط الهادئ","البحر المتوسط","بحر قزوين"],a:0,h:"راجع الخريطة: ما المحيط الواقع في غرب القارة؟",e:"يحد المحيط الأطلسي أفريقيا غربًا."},
+ {t:"m",q:"من وصل إلى رأس الرجاء الصالح في رحلات الاستكشاف البرتغالية؟",o:["ابن بطوطة","بارتولوميو دياز","محمد علي باشا","الخديوي إسماعيل"],a:1,h:"هو رحالة أوروبي برتغالي.",e:"وصل بارتولوميو دياز إلى رأس الرجاء الصالح، ثم دار فاسكو دا جاما حول جنوب القارة."},
+ {t:"m",q:"في أي عام دار فاسكو دا جاما حول جنوب أفريقيا في طريقه إلى الهند؟",o:["1298م","1398م","1498م","1598م"],a:2,h:"راجع الخط الزمني: محطة الأوروبيين.",e:"دار فاسكو دا جاما حول جنوب القارة في طريقه إلى الهند سنة 1498م."},
+ {t:"t",q:"يمر خط الاستواء بقارة أفريقيا.",a:0,h:"تذكّر: القارة تمتد شمال خط الاستواء وجنوبه.",e:"صح؛ يعبر خط الاستواء أفريقيا، فتمتد شماله وجنوبه."},
+ {t:"t",q:"يحد المحيط الأطلسي قارة أفريقيا من الشرق.",a:1,h:"أين يقع المحيط الأطلسي بالنسبة إلى القارة؟",e:"خطأ؛ يحدها الأطلسي غربًا، بينما يحدها المحيط الهندي شرقًا."},
+ {t:"t",q:"أسهمت بعثات مصرية حديثة في البحث عن منابع نهر النيل.",a:0,h:"تذكّر ما فعله محمد علي باشا.",e:"صح؛ أرسل محمد علي باشا بعثات للبحث عن منابع النيل، وواصل الخديوي إسماعيل الاهتمام بالاستكشاف."},
+ {t:"s",q:"اذكر سببين لأهمية موقع أفريقيا.",m:"تشرف على ممرات مائية مهمة، وتتوسط طرق الاتصال بين القارات؛ كما يساعد تنوع أقاليمها ومناخها على تنوع الموارد والأنشطة الاقتصادية."},
+ {t:"s",q:"اذكر مثالًا واحدًا على إسهام العرب في استكشاف أفريقيا.",m:"رحلات ابن بطوطة، أو نشاط الرحالة والتجار العرب في مناطق القارة."}]
+};
+D.max=D.ptsMcq*(2+7)+D.ptsMatch*4;
+const SC=[["home","الترحيب"],["goals","الأهداف والمسار"],["warm","تمهيد",1],["conc","المفاهيم",0],["loc","استكشاف الخريطة"],["map","تثبيت الموقع",1],["imp","اكتشاف الأهمية",1],["egy","أفريقيا سياسيًا وموقع مصر",1],["tl","رحلات الاستكشاف",1],["match","مطابقة الشخصيات",1],["quiz","التقويم الختامي",1],["end","النتيجة"]];
+const blank=()=>({i:0,done:{},p:{},res:{},t:{},w:{},sel:null,last:null,lines:{},v:{},open:{},qi:0,txt:{}});
+let S=blank(),Q={};
+try{const j=sessionStorage.getItem("afr1");if(j)S=Object.assign(blank(),JSON.parse(j))}catch(e){}
+const save=()=>{try{sessionStorage.setItem("afr1",JSON.stringify(S))}catch(e){}window.onSave&&onSave()};
+const pts=()=>Object.values(S.p).reduce((a,b)=>a+b,0);
+const cnt=p=>Object.keys(S.done).filter(k=>k.startsWith(p)).length;
+
+function judge(id,ok,p){if(S.done[id])return;if(ok){S.done[id]=1;S.p[id]=p;S.res[id]="ok"}else{S.t[id]=(S.t[id]||0)+1;if(S.t[id]>=2){S.done[id]=1;S.res[id]="rev"}else S.res[id]="hint"}}
+function fb(id,right,hint,exp){const r=S.res[id];if(!r)return"";
+ if(r=="ok")return`<div class="fb ok" role="status"><b>أحسنت!</b> ${exp}</div>`;
+ if(r=="hint")return`<div class="fb hint" role="status"><b>حاول مرة أخرى.</b> تلميح: ${hint}</div>`;
+ return`<div class="fb rev" role="status"><b>الإجابة الصحيحة: ${right}.</b> ${exp}</div>`}
+function mcq(id,q,o,a,h,e,p){Q[id]={a,p};const r=S.res[id],w=S.w[id]||[];
+ return`<p class="q">${q}</p><div class="opts">${o.map((x,k)=>{let c=w.includes(k)?"bad":(S.done[id]&&k==a?"good":"");return`<button class="opt ${c}" data-a="ans" data-id="${id}" data-v="${k}" ${S.done[id]||w.includes(k)?"disabled":""}>${x}</button>`}).join("")}</div>${fb(id,o[a],h,e)}`}
+
+/* ===== الخريطة المبسطة (رسم أصلي) ===== */
+function svg(o){const L=[["خط الاستواء",208,"o"],["مدار السرطان",120,"b"],["مدار الجدي",296,"b"]];
+ return`<svg class="map" viewBox="0 0 640 360" role="img" aria-label="خريطة مبسطة لقارة أفريقيا وما حولها">
+ <path d="M150 0H450V36L380 50 300 46 220 54 150 42Z" fill="#E2E8F0" stroke="#1E293B" stroke-width="2"/>
+ <path d="M470 0H640V190L540 172 505 128 480 96 470 60Z" fill="#E2E8F0" stroke="#1E293B" stroke-width="2"/>
+ <path d="M235 95 270 76 320 72 370 80 420 86 445 106 470 140 500 175 480 200 450 225 440 260 415 300 385 330 350 335 330 300 315 265 300 230 275 215 255 190 235 170 215 140 220 115Z" fill="#A7F3D0" stroke="#1E293B" stroke-width="3"/>
+ <ellipse cx="478" cy="272" rx="9" ry="22" fill="#A7F3D0" stroke="#1E293B" stroke-width="2"/>
+ ${L.map((l,k)=>o.lines&&o.lines[k]?`<line x1="0" x2="640" y1="${l[1]}" y2="${l[1]}" stroke="${l[2]=="o"?"#FF6B35":"#0EA5E9"}" stroke-width="3" stroke-dasharray="8 5"/><text class="lbl" x="12" y="${l[1]-6}">${l[0]}</text>`:"").join("")}
+ ${(o.lab||[]).map(l=>`<text class="lbl" x="${l[1]}" y="${l[2]}" text-anchor="middle">${l[0]}</text>`).join("")}
+ ${(o.z||[]).map(z=>`<g class="z" tabindex="0" role="button" aria-label="${z[4]||"موضع"}" data-a="zone" data-v="${z[0]}"><circle cx="${z[1]}" cy="${z[2]}" r="${z[3]}"/>${o.on&&o.on[z[0]]?`<circle cx="${z[1]}" cy="${z[2]}" r="${z[3]}" fill="#10B981" fill-opacity=".85" stroke-dasharray="0"/><text class="lbl" x="${z[1]}" y="${z[2]+5}" text-anchor="middle">${o.on[z[0]]}</text>`:""}</g>`).join("")}</svg>`}
+const SEAZ=D.seas.map(s=>[s[0],s[3],s[4],s[0]=="med"?20:23,"موضع "+s[1]]);
+
+/* ===== الشاشات ===== */
+const V={
+home:()=>`<h1>حزمة الدرس التفاعلي الأول:<br>${D.title}</h1><p class="sub">الوحدة الأولى: الملامح الطبيعية لقارة أفريقيا وحضاراتها القديمة · الدرس الأول: الموقع والكشوف الجغرافية · الفصل الدراسي الأول</p>
+ <p>ستتعرف موقع أفريقيا وحدودها ومكانتها بين قارات العالم، ثم تكتشف كيف أسهم المصريون القدماء والعرب والأوروبيون في معرفة أجزاء القارة وطرق الوصول إليها.</p>
+ <p><button class="btn pri" data-a="next">ابدأ الدرس</button></p>
+ <div class="box yl"><b>ملاحظة للمعلم:</b> المحتوى تلخيص تعليمي مستند إلى الدرس المرفق، ويُفضّل مراجعته مع المعلم قبل النشر النهائي. المُعد: عبدالرحمن علي فتحي علي.</div>`,
+goals:()=>`<h2>ماذا سنتعلم؟</h2><div class="cols"><div><ol class="t">${D.goals.map(g=>`<li>${g}</li>`).join("")}</ol></div><div class="box b"><h3>مسار التعلم</h3><ul class="t">${D.path.map(p=>`<li><b>${p[0]}</b>: ${p[1]}</li>`).join("")}</ul><p class="sub">في كل نشاط: اقرأ التعليمات، وجرّب، وإذا أخطأت ستجد تلميحًا ومحاولة ثانية. لا تُخصم نقاط بسبب الخطأ.</p></div></div>`,
+warm:()=>`<h2>تمهيد</h2><p class="sub">التعليمات: انظر إلى الخريطة ثم اختر الإجابة.</p><div class="cols">${svg({lab:[["؟",330,215]]})}<div>${mcq("warm:q","ما القارة التي تقع بين المحيط الأطلسي والمحيط الهندي؟",["أوروبا","آسيا","أفريقيا","أستراليا"],2,"تمتد شمال خط الاستواء وجنوبه.","هي أفريقيا؛ يحدها الأطلسي غربًا والهندي شرقًا.",D.ptsMcq)}</div></div>`,
+conc:()=>`<h2>مفاهيم أساسية</h2><p class="sub">التعليمات: اضغط على كل بطاقة لتظهر الشرح.</p><div class="cols">${D.concepts.map((c,k)=>`<button class="btn card ${S.open[k]?"open":""}" data-a="open" data-v="${k}" aria-expanded="${!!S.open[k]}"><b>${c[0]}</b>${S.open[k]?`<br>${c[1]}<br><small>${c[2]}</small>`:""}</button>`).join("")}</div>`,
+loc:()=>`<h2>أين تقع أفريقيا؟</h2><div class="cols">${svg({lines:S.lines,lab:[["أفريقيا",345,215],["المحيط الأطلسي",90,215],["المحيط الهندي",560,300],["البحر المتوسط",330,64],["البحر الأحمر",520,150],["أوروبا",300,22],["آسيا",585,95]]})}<div>
+ <p>ثاني أكبر قارات العالم مساحة بعد آسيا: نحو <b>${D.area} مليون كم²</b>، أي قرابة خُمس مساحة قارات العالم. يعبرها خط الاستواء.</p>
+ <ul class="t"><li>شمالًا: البحر المتوسط، ويفصلها عن أوروبا.</li><li>شرقًا: البحر الأحمر والمحيط الهندي، وتجاورها آسيا شمال شرقًا.</li><li>غربًا: المحيط الأطلسي.</li><li>جنوبًا: يلتقي المحيطان الأطلسي والهندي.</li></ul>
+ <div class="box b">تمتد تقريبًا بين دائرتي عرض ${D.lat}، وبين خطي طول ${D.lon}.</div></div></div>`,
+map:()=>{const chips=D.seas.map(s=>`<button class="chip ${S.sel==s[0]?"sel":""}" data-a="chip" data-v="${s[0]}" ${S.done["map:"+s[0]]?"disabled":""}>${s[1]}</button>`).join("");
+ const on={};D.seas.forEach(s=>{if(S.done["map:"+s[0]])on[s[0]]=s[1]});
+ const ln=[["خط الاستواء"],["مدار السرطان"],["مدار الجدي"]].map((l,k)=>`<button class="chip ${S.lines[k]?"good":""}" data-a="line" data-v="${k}">${l[0]}</button>`).join("");
+ const s=D.seas.find(x=>x[0]==S.last),id="map:"+S.last;
+ return`<h2>ثبّت الموقع</h2><p class="sub">التعليمات: اختر اسمًا ثم اضغط على موضعه في الخريطة. ثم اضغط على الخطوط لإظهارها.</p><div class="cols"><div>${svg({z:SEAZ,on,lines:S.lines})}</div><div><div class="chips">${chips}</div><h3>أظهر الخطوط:</h3><div class="chips">${ln}</div>${s?fb(id,s[1],s[2],"موضعه الصحيح كما في الخريطة."):""}</div></div>`},
+imp:()=>{const chips=D.imp.map((x,k)=>`<button class="chip ${S.sel==k?"sel":""}" data-a="chip" data-v="${k}" ${S.done["imp:"+k]?"disabled":""}>${x[0]}</button>`).join("");
+ const c=S.last!=null?D.imp[S.last]:null;
+ return`<h2>لماذا موقع أفريقيا مهم؟</h2><p class="sub">التعليمات: اختر مثالًا ثم اضغط على نوع الأهمية المناسب.</p><div class="chips">${chips}</div><div class="col3">${Object.keys(D.cats).map(k=>`<div class="box ${k=="s"?"b":k=="e"?"gr":"yl"}"><button class="btn" style="width:100%" data-a="cat" data-v="${k}">${D.cats[k][0]}</button><p><small>${D.cats[k][1]}</small></p><div class="slot">${D.imp.map((x,j)=>S.done["imp:"+j]&&x[1]==k?`<span>${x[0]}</span>`:"").join("")}</div></div>`).join("")}</div>${c?fb("imp:"+S.last,D.cats[c[1]][0],"فكّر: هل المثال عن ممرات وموقع، أم موارد ومناخ، أم حضارات؟",D.cats[c[1]][1]):""}`},
+egy:()=>{const on={};if(S.done["egy:m"])on.eg="مصر";
+ return`<h2>أفريقيا سياسيًا وموقع مصر</h2><p>تضم القارة <b>${D.countries} دولة</b>، و${D.biggest} أكبرها مساحة. تقع مصر في الركن الشمالي الشرقي من أفريقيا، وتربط أفريقيا بآسيا، وتشرف على قناة السويس والبحر الأحمر والبحر المتوسط.</p><div class="cols"><div>${mcq("egy:q","أي الدولتين أكبر مساحة؟",["مصر","الجزائر"],1,"ابحث عن أكبر دول القارة مساحة.","الجزائر أكبر دول أفريقيا مساحة.",D.ptsMcq)}</div><div><p class="q">اضغط على موضع مصر في الخريطة.</p>${svg({z:[["eg",425,112,19,"مصر"],["dz",262,125,26,"الجزائر"]],on,lab:[["الجزائر",262,128]]})}${fb("egy:m","مصر","تقع في الركن الشمالي الشرقي من أفريقيا.","تقع مصر شمال شرق القارة وتربطها بآسيا.")}</div></div>`},
+tl:()=>{const v=S.v.s!=null?D.tl[S.v.s]:null;
+ return`<h2>من أسهم في اكتشاف أفريقيا؟</h2><p class="sub">التعليمات: اضغط على كل محطة لتقرأ نبذتها.</p><div class="tl">${D.tl.map((x,k)=>`<button class="chip ${S.sel==="t"+k?"sel":S.v[k]?"good":""}" data-a="stn" data-v="${k}">${x[0]}</button>`).join("")}</div>${v?`<div class="box yl"><h3>${v[1]}</h3><p>${v[2]}</p></div>`:'<div class="box">اختر محطة للبدء.</div>'}`},
+match:()=>{const order=[1,3,0,2];const rows=D.match.map((m,k)=>`<button class="chip ${S.sel===k?"sel":""} ${S.done["match:"+k]?"good":""}" data-a="chip" data-v="${k}" ${S.done["match:"+k]?"disabled":""}>${m[0]}</button>`).join("");
+ const L=S.last!=null?D.match[S.last]:null;
+ return`<h2>طابق الإنجاز بصاحبه</h2><p class="sub">التعليمات: اختر الإنجاز من اليمين ثم اختر الشخصية أو المجموعة المناسبة. كل مطابقة صحيحة = ${D.ptsMatch} نقطة.</p><div class="cols"><div class="chips" style="flex-direction:column">${rows}</div><div class="chips" style="flex-direction:column">${order.map(j=>`<button class="chip" data-a="who" data-v="${j}">${D.who[j]}</button>`).join("")}</div></div>${L?fb("match:"+S.last,D.who[L[1]],L[2],L[3]):""}`},
+quiz:()=>{const k=S.qi,x=D.quiz[k],id="quiz:"+(k+1);let b;
+ if(x.t=="m")b=mcq(id,x.q,x.o,x.a,x.h,x.e,D.ptsMcq);
+ else if(x.t=="t")b=mcq(id,x.q,["صح","خطأ"],x.a,x.h,x.e,D.ptsMcq);
+ else b=`<p class="q">${x.q}</p><label for="ta" class="sub">اكتب إجابتك ثم قارنها بالنموذج:</label><textarea id="ta">${S.txt[id]||""}</textarea><p><button class="btn" data-a="model" data-id="${id}">أظهر نموذج الإجابة</button></p>${S.done[id]?`<div class="fb rev"><b>نموذج الإجابة:</b> ${x.m}</div>`:""}`;
+ return`<h2>التقويم الختامي <small>(سؤال ${k+1} من ${D.quiz.length})</small></h2>${b}`},
+end:()=>{const acts=[["الخريطة",cnt("map:")==6&&Object.keys(S.lines).length==3],["تصنيف الأهمية",cnt("imp:")==6],["موقع مصر",!!S.done["egy:q"]&&!!S.done["egy:m"]],["الخط الزمني",[0,1,2].every(k=>S.v[k])],["المطابقة",cnt("match:")==4],["التقويم",cnt("quiz:")==9]];
+ const n=acts.filter(a=>a[1]).length,badge=acts[0][1]&&acts[3][1]&&acts[4][1],p=pts();
+ return`<h2>النتيجة</h2><div class="cols"><div class="box gr"><div class="big">${p} / ${D.max}</div><p>مجموع النقاط</p><p><b>الأنشطة المكتملة: ${n} من 6</b></p><ul class="t">${acts.map(a=>`<li>${a[1]?"✔":"✖"} ${a[0]}</li>`).join("")}</ul></div><div>${badge?'<div class="bdg">شارة: مستكشف أفريقيا</div>':'<p class="sub">أكمل نشاط الخريطة والخط الزمني والمطابقة لتنال شارة «مستكشف أفريقيا».</p>'}<p>${p>=D.max*.8?"رائع! أصبحت تعرف أفريقيا جيدًا.":p>=D.max*.5?"أحسنت! راجع الأنشطة التي لم تكتمل لتزيد نقاطك.":"بداية جيدة! أعد الأنشطة وستتحسن نتيجتك."}</p><p><button class="btn" data-a="redo">إعادة الأنشطة</button> <button class="btn" data-a="restart">إعادة الدرس من البداية</button></p></div></div>`}
+};
+
+/* ===== العرض ===== */
+function render(){Q={};const s=SC[S.i];$("main").innerHTML=V[s[0]]();
+ $("pts").textContent="النقاط: "+pts();
+ $("prog").innerHTML=SC.map((_,k)=>`<i class="${k<S.i?"d":k==S.i?"c":""}"></i>`).join("");
+ $("step").textContent=`المرحلة ${S.i+1} من ${SC.length}: ${s[1]}`;
+ $("bPrev").disabled=S.i==0&&!(0);$("bPrev").disabled=S.i==0;$("bNext").disabled=S.i==SC.length-1;$("bReset").disabled=!s[2];save()}
+function $(q){return document.querySelector(q)||document.getElementById(q)}
+function go(i,focus){S.i=i;S.sel=null;S.last=null;render();if(focus!==0){$("main").scrollTop=0;$("main").focus({preventScroll:true})}}
+function resetAct(){const id=SC[S.i][0]+":";["done","p","res","t","w"].forEach(o=>Object.keys(S[o]).forEach(k=>{if(k.startsWith(id))delete S[o][k]}));
+ const k=SC[S.i][0];if(k=="map")S.lines={};if(k=="tl")S.v={};if(k=="quiz"){S.qi=0;S.txt={}}S.sel=null;S.last=null;render()}
+function place(id,ok,p){judge(id,ok,p);if(!ok){S.w[id]=S.w[id]||[]}}
+function act(a,e){const t=e.dataset,v=t.v,sc=SC[S.i][0];
+ if(a=="next"){if(sc=="quiz"&&S.qi<D.quiz.length-1){S.qi++;render();return}go(Math.min(S.i+1,SC.length-1))}
+ else if(a=="prev"){if(sc=="quiz"&&S.qi>0){S.qi--;render();return}go(Math.max(S.i-1,0))}
+ else if(a=="home")go(0);else if(a=="reset")resetAct();
+ else if(a=="redo"){S=Object.assign(blank(),{i:2});render()}
+ else if(a=="restart"){S=blank();render()}
+ else if(a=="ans"){const q=Q[t.id],k=+v;if(k!=q.a){(S.w[t.id]=S.w[t.id]||[]).push(k)}judge(t.id,k==q.a,q.p);render()}
+ else if(a=="open"){S.open[v]=!S.open[v];render()}
+ else if(a=="line"){S.lines[v]=!S.lines[v];if(!S.lines[v])delete S.lines[v];render()}
+ else if(a=="chip"){S.sel=sc=="match"?+v:(sc=="imp"?+v:v);S.last=S.sel;render()}
+ else if(a=="zone"){if(sc=="map"){if(S.sel==null)return;const id="map:"+S.sel;if(S.done[id])return;judge(id,S.sel==v,0);S.last=S.sel;if(S.done[id])S.sel=null;render()}
+  else if(sc=="egy"){if(S.done["egy:m"])return;judge("egy:m",v=="eg",D.ptsMcq);render()}
+  else if(sc=="warm"){}}
+ else if(a=="cat"){if(S.sel==null)return;const id="imp:"+S.sel;judge(id,D.imp[S.sel][1]==v,0);S.last=S.sel;if(S.done[id])S.sel=null;render()}
+ else if(a=="stn"){S.v[v]=1;S.v.s=+v;S.sel="t"+v;render()}
+ else if(a=="who"){if(S.sel==null)return;const id="match:"+S.sel;judge(id,D.match[S.sel][1]==+v,D.ptsMatch);S.last=S.sel;if(S.done[id])S.sel=null;render()}
+ else if(a=="model"){const ta=$("#ta");S.txt[t.id]=ta?ta.value:"";S.done[t.id]=1;S.res[t.id]="ok";render()}}
+document.addEventListener("click",ev=>{const e=ev.target.closest("[data-a]");if(e)act(e.dataset.a,e)});
+document.addEventListener("keydown",ev=>{if((ev.key=="Enter"||ev.key==" ")&&ev.target.matches("g.z")){ev.preventDefault();act("zone",ev.target)}});
+/* ===== الإعدادات (عدّلها بعد ربط جوجل) ===== */
+const CFG={CLIENT_ID:"592530917663-9sp66snvudjgcf6k7b6fnpa81kf9jd0j.apps.googleusercontent.com",API:"https://script.google.com/macros/s/AKfycbzFWv9_qU47Fkyy3xEwy_CLlD8pVoi45dFLaS0YJ5CWvvkGoYm8oVLewHMN9nnhNsz5/exec"};
+const demo=()=>CFG.API.startsWith("PUT")||CFG.CLIENT_ID.startsWith("PUT");
+const esc=s=>String(s==null?"":s).replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const post=o=>fetch(CFG.API,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(o)}).then(r=>r.json());
+/* ===== المرشد + الصوت + الكونفيتي ===== */
+const GM={home:"أهلًا بك أيها المستكشف! أنا ابن بطوطة، رحّالة من طنجة. هيّا نكتشف أفريقيا معًا!",goals:"هذه خطة رحلتنا. اقرأ الأهداف ثم انطلق!",warm:"أدِر الكرة الأرضية بإصبعك لترى أفريقيا، ثم أجب عن السؤال!",conc:"اضغط على كل بطاقة لتنقلب وتكشف لك المعنى.",loc:"لقد سافرتُ في شمال أفريقيا وغربها وشرقها. ركّز في الخريطة والحدود!",map:"اختر الاسم ثم اضغط على الدائرة الوامضة. ولا تنسَ الخطوط!",imp:"اختر مثالًا ثم حدّد: استراتيجية أم اقتصادية أم حضارية؟",egy:"مصر بلدي الحبيب! ابحث عنها في الركن الشمالي الشرقي.",tl:"أنا من الرحّالة العرب! اضغط على المحطات لترى رحلاتنا.",match:"طابق كل إنجاز بصاحبه. أنت قادر على ذلك!",quiz:"المحطة الأخيرة! خذ وقتك وأجب بتركيز.",end:"انتهت الرحلة! انظر إلى نتيجتك."};
+const OKM=["ممتاز! إجابة صحيحة!","أحسنت! أنت رحّالة بارع!","صحيح! واصل يا بطل!"],HM=["قريب! اقرأ التلميح وحاول مرة أخرى.","لا بأس، حاول مرة أخرى!"],RM=["لا بأس، راجع الإجابة الصحيحة وواصل!"];
+const rnd=a=>a[Math.floor(Math.random()*a.length)];
+let pend=null,lastKey=null,lastPts=0,tt=null,mute=false,AC=null,lastT=0,lastSc=null;const EV=[];
+const RM_=matchMedia("(prefers-reduced-motion:reduce)").matches;
+let curU=null,curA=null,vt=0,hinted=false;
+/* ===== إعدادات الصوت (عدّل هنا) ===== */
+const VC={rate:.95,pitch:.9,pref:/shakir|hamed|naayf|maged|male|رجل/i}; // السرعة والنبرة وتفضيل الصوت الرجالي
+const AUD={}; // تسجيلاتك الحقيقية: مثال  home:"audio/home.mp3", ok0:"audio/ok0.mp3", hint0:"audio/hint0.mp3", rev0:"audio/rev0.mp3"
+const PR=[["بارتولوميو دياز","بَارتُولُومِيُو دِيَاز"],["بارتولوميو","بَارتُولُومِيُو"],["فاسكو دا جاما","فَاسكُو دَا جَامَا"],["ابن بطوطة","ابْنُ بَطُّوطَة"],["محمد علي باشا","مُحَمَّد عَلِي بَاشَا"],["الخديوي إسماعيل","الخِدِيوِي إِسْمَاعِيل"],["رأس الرجاء الصالح","رَأسِ الرَّجَاءِ الصَّالِح"],["باب المندب","بَابِ المَنْدَب"],["جبل طارق","جَبَلِ طَارِق"],["أفريقيا","أَفْرِيقِيَا"],["طنجة","طَنْجَة"],["الجزائر","الجَزَائِر"],["السويس","السُّوَيْس"],["الاستواء","الاسْتِوَاء"],["السرطان","السَّرَطَان"],["الجدي","الجَدْي"],["الأطلسي","الأَطْلَسِي"],["النوبة","النُّوبَة"],["1498م","أَلْفٍ وَأَرْبَعِمِائَةٍ وَثَمَانِيَةٍ وَتِسْعِينَ مِيلَادِيًّا"],["كم²","كِيلُومِتْر مُرَبَّع"],["°"," دَرَجَة"]];
+const fix=t=>PR.reduce((x,p)=>x.split(p[0]).join(p[1]),t);
+const AUDT={};Object.keys(GM).forEach(k=>AUD[k]&&(AUDT[GM[k]]=AUD[k]));[[OKM,"ok"],[HM,"hint"],[RM,"rev"]].forEach(([a,n])=>a.forEach((t,i)=>AUD[n+i]&&(AUDT[t]=AUD[n+i])));
+function arVoice(){try{const v=speechSynthesis.getVoices().filter(x=>/^ar/i.test(x.lang)),sc=x=>(/^ar([-_](SA|XA))?$/i.test(x.lang)?4:0)+(VC.pref.test(x.name)?3:0)+(/natural|online/i.test(x.name)?1:0);v.sort((a,b)=>sc(b)-sc(a));return v[0]||null}catch(e){return null}}
+function stopV(){vt++;try{speechSynthesis.cancel()}catch(e){}if(curA){try{curA.pause()}catch(e){}curA=null}}
+function vHint(){if(hinted)return;hinted=true;const h=$("#vh");h.hidden=false;setTimeout(()=>h.hidden=true,12000)}
+function speak(t,ib){if(mute)return false;stopV();const my=vt,on=()=>ib.classList.add("sp"),off=()=>ib.classList.remove("sp");
+ const au=AUDT[t];if(au){try{const a=new Audio(au);a.onplaying=on;a.onended=off;a.onerror=()=>{off();AUDT[t]=null;speak(t,ib)};curA=a;const p=a.play();if(p&&p.catch)p.catch(()=>{off();AUDT[t]=null;speak(t,ib)});return true}catch(e){}}
+ t=fix(t);const v="speechSynthesis" in window?arVoice():null;
+ if(v){setTimeout(()=>{if(my!=vt)return;const u=new SpeechSynthesisUtterance(t);u.voice=v;u.lang=v.lang;u.rate=VC.rate;u.pitch=VC.pitch;u.onstart=on;u.onend=u.onerror=off;curU=u;speechSynthesis.speak(u)},90);return true}
+ try{const a=new Audio("https://translate.google.com/translate_tts?ie=UTF-8&client=tw-ob&tl=ar&q="+encodeURIComponent(t));a.referrerPolicy="no-referrer";a.onplaying=on;a.onended=off;a.onerror=()=>{off();vHint()};curA=a;const p=a.play();if(p&&p.catch)p.catch(()=>{off();vHint()});return true}catch(e){vHint();return false}}
+try{speechSynthesis.getVoices();speechSynthesis.onvoiceschanged=()=>{}}catch(e){}
+document.addEventListener("pointerdown",function u(){document.removeEventListener("pointerdown",u,true);try{const x=new SpeechSynthesisUtterance(" ");x.volume=0;speechSynthesis.speak(x)}catch(e){}},true);
+function say(t){clearTimeout(tt);const el=$("#gtxt"),ib=$("#ib");const spoke=speak(t,ib);if(RM_){el.textContent=t;return}el.textContent="";if(!spoke)ib.classList.add("sp");let i=0;(function n(){el.textContent=t.slice(0,++i);if(i<t.length)tt=setTimeout(n,24);else if(!spoke)ib.classList.remove("sp")})()}
+function tone(f,d,t,v){if(mute)return;try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain();o.type=t||"sine";o.frequency.value=f;g.gain.value=v||.08;o.connect(g);g.connect(AC.destination);const n=AC.currentTime;g.gain.exponentialRampToValueAtTime(.001,n+d);o.start(n);o.stop(n+d)}catch(e){}}
+const snd={ok(){tone(660,.12);setTimeout(()=>tone(880,.18),110)},bad(){tone(180,.25,"square",.05)},click(){tone(500,.04,"triangle",.05)}};
+$("#snd").onclick=()=>{mute=!mute;$("#snd").textContent=mute?"🔇":"🔊";if(mute)stopV();else say($("#gtxt").textContent||"أهلًا بك!")};
+document.addEventListener("click",e=>{if(e.target.closest("[data-a],[data-g],.btn"))snd.click()},true);
+const cv=document.createElement("canvas");cv.id="cf";document.body.appendChild(cv);let P=[],run=false;
+function confetti(){if(RM_)return;cv.width=innerWidth;cv.height=innerHeight;const c=["#FFC82C","#FF6B35","#10B981","#0EA5E9","#fff"];for(let i=0;i<70;i++)P.push({x:innerWidth/2,y:innerHeight*.6,vx:(Math.random()-.5)*14,vy:-Math.random()*14-4,r:Math.random()*8+5,c:c[i%5],s:Math.random()<.3,a:Math.random()*6});if(!run){run=true;requestAnimationFrame(cf)}}
+function cf(){const x=cv.getContext("2d");x.clearRect(0,0,cv.width,cv.height);P=P.filter(p=>p.y<cv.height+20);P.forEach(p=>{p.vy+=.45;p.x+=p.vx;p.y+=p.vy;p.a+=.2;x.fillStyle=p.c;x.save();x.translate(p.x,p.y);x.rotate(p.a);if(p.s){x.font=p.r*2+"px sans-serif";x.fillText("★",0,0)}else x.fillRect(-p.r/2,-p.r/2,p.r,p.r*.6);x.restore()});if(P.length)requestAnimationFrame(cf);else run=false}
+/* ===== الكرة الأرضية ثلاثية الأبعاد (بدون مكتبات خارجية) ===== */
+let GL=null;
+function mkGlobe(){if(GL)return GL;const c=document.createElement("canvas");c.width=1024;c.height=512;const x=c.getContext("2d");x.fillStyle="#1d6fb8";x.fillRect(0,0,1024,512);
+ const poly=(p,f)=>{x.beginPath();p.forEach((q,i)=>{const X=(q[0]+180)/360*1024,Y=(90-q[1])/180*512;i?x.lineTo(X,Y):x.moveTo(X,Y)});x.closePath();x.fillStyle=f;x.fill();x.strokeStyle="#1E293B";x.lineWidth=3;x.stroke()};
+ const L="#9bd3a8";poly([[-10,36],[-9,43],[0,50],[10,56],[30,60],[40,45],[28,41],[15,38],[3,38]],L);
+ poly([[40,45],[30,60],[60,72],[120,72],[170,65],[140,35],[122,25],[105,10],[80,8],[70,22],[57,25],[50,30],[36,36]],L);
+ poly([[-130,55],[-100,70],[-60,50],[-80,25],[-100,15],[-120,35]],L);poly([[-80,10],[-50,-5],[-40,-20],[-65,-55],[-75,-30]],L);poly([[115,-12],[150,-20],[145,-38],[115,-33]],L);
+ poly([[-17,21],[-10,35],[10,37],[32,31],[35,28],[43,12],[51,12],[40,-3],[40,-15],[35,-25],[20,-35],[12,-18],[9,4],[-8,4],[-17,14]],"#FFC82C");
+ x.strokeStyle="rgba(255,255,255,.3)";x.lineWidth=1;for(let i=0;i<=12;i++){x.beginPath();x.moveTo(i*1024/12,0);x.lineTo(i*1024/12,512);x.stroke()}for(let i=0;i<=6;i++){x.beginPath();x.moveTo(0,i*512/6);x.lineTo(1024,i*512/6);x.stroke()}
+ const T=x.getImageData(0,0,1024,512).data,N=240,R=N/2-6,o=document.createElement("canvas");o.width=o.height=N;o.setAttribute("aria-label","كرة أرضية ثلاثية الأبعاد، اسحب لتدويرها");o.style.cursor="grab";
+ const g=o.getContext("2d"),im=g.createImageData(N,N),d=im.data,TL=20*Math.PI/180;let lon0=TL,pit=0,drag=0,px=0,py=0,idle=0,t=0;
+ o.onpointerdown=e=>{drag=1;px=e.clientX;py=e.clientY;o.setPointerCapture(e.pointerId);o.style.cursor="grabbing"};o.onpointerup=()=>{drag=0;idle=90;o.style.cursor="grab"};
+ o.onpointermove=e=>{if(!drag)return;lon0-=(e.clientX-px)*.012;pit=Math.max(-1.2,Math.min(1.2,pit-(e.clientY-py)*.012));px=e.clientX;py=e.clientY};
+ (function fr(){requestAnimationFrame(fr);if(!o.isConnected)return;t+=.08;if(!drag&&!RM_){if(idle>0)idle--;else lon0+=.006}
+  const cp=Math.cos(pit),sp=Math.sin(pit),PI=Math.PI;
+  for(let j=0;j<N;j++)for(let i=0;i<N;i++){const k=(j*N+i)*4,X=(i-N/2)/R,Y=(N/2-j)/R,r2=X*X+Y*Y;if(r2>1){d[k+3]=0;continue}
+   const z=Math.sqrt(1-r2),y2=Y*cp-z*sp,z2=Y*sp+z*cp;let lon=Math.atan2(X,z2)+lon0;lon=((lon+PI)%(2*PI)+2*PI)%(2*PI);
+   const u=Math.min(1023,(lon/(2*PI)*1024)|0),v=Math.min(511,((PI/2-Math.asin(y2))/PI*512)|0),q=(v*1024+u)*4,sh=.45+.55*z;
+   d[k]=T[q]*sh;d[k+1]=T[q+1]*sh;d[k+2]=T[q+2]*sh;d[k+3]=255}
+  g.putImageData(im,0,0);g.strokeStyle="#1E293B";g.lineWidth=3;g.beginPath();g.arc(N/2,N/2,R,0,2*PI);g.stroke();
+  const la=5*PI/180,l=TL-lon0,mx=Math.cos(la)*Math.sin(l),my=Math.sin(la),mz=Math.cos(la)*Math.cos(l),y1=my*cp+mz*sp,z1=-my*sp+mz*cp;
+  if(z1>0){const cx=N/2+mx*R,cy=N/2-y1*R;g.fillStyle="#FF6B35";g.strokeStyle="#fff";g.lineWidth=2;g.beginPath();g.arc(cx,cy,5+3*Math.abs(Math.sin(t)),0,2*PI);g.fill();g.stroke();g.font="bold 14px sans-serif";g.fillStyle="#1E293B";g.strokeStyle="#fff";g.lineWidth=4;g.strokeText("أفريقيا",cx-22,cy-12);g.fillText("أفريقيا",cx-22,cy-12)}})();
+ return GL=o}
+V.warm=()=>`<h2>تمهيد</h2><p class="sub">التعليمات: لُفّ الكرة بإصبعك أو بالماوس لتجد أفريقيا (النقطة البرتقالية)، ثم اختر الإجابة.</p><div class="cols"><div id="globe"></div><div>${mcq("warm:q","ما القارة التي تقع بين المحيط الأطلسي والمحيط الهندي؟",["أوروبا","آسيا","أفريقيا","أستراليا"],2,"تمتد شمال خط الاستواء وجنوب خط الاستواء.","هي أفريقيا؛ يحدها الأطلسي غربًا والهندي شرقًا.",D.ptsMcq)}</div></div>`;
+/* ===== تتبّع النتائج ===== */
+let U=null;try{U=JSON.parse(sessionStorage.getItem("afru"))}catch(e){}
+const isS=()=>U&&U.role=="student";
+function stats(){const a=[cnt("map:")==6&&Object.keys(S.lines).length==3,cnt("imp:")==6,!!S.done["egy:q"]&&!!S.done["egy:m"],[0,1,2].every(k=>S.v[k]),cnt("match:")==4,cnt("quiz:")==D.quiz.length];return{n:a.filter(Boolean).length,badge:a[0]&&a[3]&&a[4]}}
+function tick(){const n=Date.now();if(lastSc&&lastT){S.tm=S.tm||{};S.tm[lastSc]=Math.round(((S.tm[lastSc]||0)+(n-lastT)/1000)*10)/10}lastT=n}
+let st=null;
+window.onSave=()=>{if(!isS())return;try{localStorage.setItem("afrp:"+U.email,JSON.stringify(S))}catch(e){}clearTimeout(st);st=setTimeout(()=>sync(),1500)};
+function sync(fin){if(!isS()||demo()||!S.aid)return;tick();const s=stats(),p={action:"save",email:U.email,sess:U.sess,attempt:{aid:S.aid,email:U.email,name:U.name,cls:U.cls,points:pts(),max:D.max,stage:S.i,completed:S.fin?1:0,acts:s.n,badge:s.badge?1:0,tm:S.tm||{}},events:EV.splice(0)};
+ if(fin&&navigator.sendBeacon){navigator.sendBeacon(CFG.API,new Blob([JSON.stringify(p)],{type:"text/plain"}));return}
+ post(p).then(r=>{if(r&&r.error=="auth")logout()}).catch(()=>{EV.unshift(...p.events)})}
+addEventListener("pagehide",()=>sync(1));
+const _j=judge;judge=function(id,ok,p){const had=S.done[id];_j(id,ok,p);if(had)return;const r=S.res[id];pend=r;EV.push({aid:S.aid,qid:id,result:r,tries:S.t[id]||0,pts:S.p[id]||0});if(EV.length>300)EV.shift()};
+const _r=render;render=function(){if(isS()&&!S.aid){S.aid=Date.now().toString(36)+Math.random().toString(36).slice(2,6)}_r();
+ const key=S.i+":"+S.qi,sc=SC[S.i][0],m=$("main");if(sc=="end")S.fin=1;
+ if(key!=lastKey){tick();lastSc=sc;lastKey=key;m.classList.remove("in");void m.offsetWidth;m.classList.add("in");if(!pend)say(sc=="end"&&pts()>=D.max*.8?"ما شاء الله! رحلة موفقة يا مستكشف أفريقيا!":GM[sc])}
+ if(pend){const r=pend;pend=null;if(r=="ok"){say(rnd(OKM));snd.ok();confetti()}else if(r=="hint"){say(rnd(HM));snd.bad()}else{say(rnd(RM));snd.bad()}}
+ if(pts()>lastPts){const e=$("#pts");e.classList.remove("bump");void e.offsetWidth;e.classList.add("bump")}lastPts=pts();
+ const gb=$("#globe");if(gb)gb.appendChild(mkGlobe())};
+/* ===== شاشة الدخول ===== */
+const GT=document.createElement("div");GT.id="gate";GT.hidden=true;document.body.appendChild(GT);
+const DS=document.createElement("div");DS.id="dash";DS.hidden=true;document.body.appendChild(DS);
+function gate(v,msg){GT.hidden=false;DS.hidden=true;$("#out").hidden=true;
+ const err=msg?`<div class="err" role="alert">${msg}</div>`:"";const back=`<button class="btn" data-g="choose">رجوع</button>`;let b;
+ if(v=="choose")b=`<h1>قارة أفريقيا</h1><p class="sub">الدراسات الاجتماعية · الصف الأول الإعدادي</p><button class="btn pri big" data-g="student">👦 أنا طالب</button><button class="btn big" data-g="teacher">👨‍🏫 أنا معلم</button><button class="btn" data-h="student">❓ كيف أستخدم الموقع؟</button>${err}`;
+ else if(v=="student")b=`<h2>دخول الطالب</h2><p>سجّل دخولك بحساب جوجل لتبدأ الدرس.</p><div id="gbtn" style="display:flex;justify-content:center;min-height:44px"></div>${demo()?`<p class="sub">لم يتم ربط جوجل بعد (CLIENT_ID).</p><button class="btn" data-g="demo">دخول تجريبي</button>`:""}${err}<p>${back}</p>`;
+ else if(v=="profile")b=`<h2>أهلًا ${esc(U.name||"")}!</h2><label>اسمك الكامل<input id="nm" value="${esc(U.name||"")}" autocomplete="name"></label><label>فصلك (مثال: 1/3)<input id="cl" value="${esc(U.cls||"")}"></label>${err}<button class="btn pri big" data-g="go">متابعة</button>`;
+ else if(v=="resume")b=`<h2>لقيت لك رحلة لم تكتمل</h2><p>هل تحب أن تكمل من حيث توقفت أم تبدأ محاولة جديدة؟</p><button class="btn pri big" data-g="cont">أكمل من حيث توقفت</button><button class="btn big" data-g="new">ابدأ محاولة جديدة</button>`;
+ else if(v=="teacher")b=`<h2>دخول المعلم</h2><label>كلمة السر<input id="pw" type="password" autocomplete="current-password"></label>${err}<button class="btn pri big" data-g="tlogin">دخول</button><p><button class="btn" data-h="teacher">❓ شرح لوحة المعلم</button> ${back}</p>`;
+ GT.innerHTML=`<div class="gb">${b}</div>`;if(v=="student")gsi();if(v=="teacher")setTimeout(()=>$("#pw")&&$("#pw").focus(),50)}
+function gsi(){const init=()=>{if(demo()||!window.google)return;google.accounts.id.initialize({client_id:CFG.CLIENT_ID,callback:onCred});google.accounts.id.renderButton($("#gbtn"),{theme:"outline",size:"large",locale:"ar"})};
+ if(window.google)init();else if(!demo()&&!document.getElementById("gsi")){const s=document.createElement("script");s.id="gsi";s.src="https://accounts.google.com/gsi/client";s.onload=init;document.head.appendChild(s)}}
+async function onCred(r){try{const b=r.credential.split(".")[1].replace(/-/g,"+").replace(/_/g,"/"),p=JSON.parse(new TextDecoder().decode(Uint8Array.from(atob(b),c=>c.charCodeAt(0))));
+ const a=await post({action:"login",idToken:r.credential});if(a.error)return gate("student","تعذّر التحقق من الحساب. حاول مرة أخرى.");
+ let pr={};try{pr=JSON.parse(localStorage.getItem("afrprof:"+p.email))||{}}catch(e){}U={role:"student",email:p.email,name:pr.name||p.name||"",cls:pr.cls||"",sess:a.sess};sessionStorage.setItem("afru",JSON.stringify(U));gate("profile")}catch(e){gate("student","حدث خطأ أثناء الدخول.")}}
+async function loadCfg(){if(demo())return;try{const c=await post({action:"config"});if(c&&c.quiz&&c.quiz.length==D.quiz.length){D.quiz=c.quiz;D.ptsMcq=+c.ptsMcq||D.ptsMcq;D.ptsMatch=+c.ptsMatch||D.ptsMatch;D.max=D.ptsMcq*(2+7)+D.ptsMatch*4}}catch(e){}}
+async function begin(resume){GT.hidden=true;$("#out").hidden=false;await loadCfg();let sv=null;if(resume){try{sv=JSON.parse(localStorage.getItem("afrp:"+U.email))}catch(e){}}S=sv?Object.assign(blank(),sv):blank();lastKey=null;lastSc=null;lastT=Date.now();render()}
+function logout(){stopV();sessionStorage.removeItem("afru");sessionStorage.removeItem("afr1");U=null;S=blank();DS.hidden=true;gate("choose")}
+$("#out").onclick=logout;
+GT.addEventListener("click",async e=>{const t=e.target.closest("[data-g]");if(!t)return;const g=t.dataset.g;
+ if(g=="choose"||g=="student"||g=="teacher")gate(g);
+ else if(g=="demo"){U={role:"student",email:"demo@local",name:"",cls:"",sess:""};gate("profile")}
+ else if(g=="go"){const n=$("#nm").value.trim(),c=$("#cl").value.trim();if(!n||!c)return gate("profile","اكتب اسمك وفصلك أولًا.");U.name=n;U.cls=c;sessionStorage.setItem("afru",JSON.stringify(U));try{localStorage.setItem("afrprof:"+U.email,JSON.stringify({name:n,cls:c}))}catch(e){}
+  let sv=null;try{sv=JSON.parse(localStorage.getItem("afrp:"+U.email))}catch(e){}sv&&sv.i>0&&!sv.fin?gate("resume"):begin(false)}
+ else if(g=="cont")begin(true);else if(g=="new")begin(false);
+ else if(g=="tlogin"){if(demo())return gate("teacher","لم يتم ربط Google Apps Script بعد.");t.disabled=true;try{const a=await post({action:"teacherLogin",password:$("#pw").value});if(a.error)return gate("teacher","كلمة السر غير صحيحة.");U={role:"teacher",token:a.token};sessionStorage.setItem("afru",JSON.stringify(U));dash()}catch(x){gate("teacher","تعذّر الاتصال بالخادم.")}}});
+/* ===== لوحة المعلم ===== */
+let DB=null,FC="";
+async function dash(){GT.hidden=true;DS.hidden=false;DS.innerHTML='<div class="dc"><p>جارٍ تحميل البيانات…</p></div>';try{DB=await post({action:"dashboard",token:U.token});if(DB.error)throw 0}catch(e){return logout()}drawDash()}
+const qLabel=id=>{const m=/^quiz:(\d+)$/.exec(id);const q=m&&D.quiz[m[1]-1];return q?q.q:id};
+function drawDash(){const A=DB.attempts,cls=[...new Set(A.map(a=>a.cls))].filter(Boolean),best={};
+ A.filter(a=>!FC||a.cls==FC).forEach(a=>{const k=a.email,b=best[k];if(!b)best[k]=Object.assign({n:1,done:+a.completed},a);else{b.n++;b.done=b.done||+a.completed;if(+a.points>+b.points)Object.assign(b,a,{n:b.n,done:b.done})}});
+ const R=Object.values(best).sort((a,b)=>b.points-a.points),done=R.filter(r=>r.done).length,avg=R.length?Math.round(R.reduce((s,r)=>s+r.points/(r.max||1)*100,0)/R.length):0;
+ const weak=R.filter(r=>!r.done||r.points/(r.max||1)<.5),ms=Object.entries(DB.missed||{}).sort((a,b)=>b[1]-a[1]).slice(0,5);
+ const qe=D.quiz.map((q,i)=>`<div class="qe" data-qi="${i}"><b>سؤال ${i+1}</b><input data-f="q" value="${esc(q.q)}">${q.t=="s"?`<textarea data-f="m">${esc(q.m)}</textarea>`:`<div class="r">${(q.o||["صح","خطأ"]).map((o,k)=>`<input data-f="o${k}" value="${esc(o)}" ${q.t=="t"?"readonly":""}>`).join("")}</div><label>رقم الإجابة الصحيحة (1 = أول خيار)<input data-f="a" type="number" min="1" max="${(q.o||[1,2]).length}" value="${q.a+1}"></label><input data-f="h" value="${esc(q.h)}" placeholder="تلميح"><input data-f="e" value="${esc(q.e)}" placeholder="شرح">`}</div>`).join("");
+ DS.innerHTML=`<div class="dc"><div style="display:flex;gap:8px;flex-wrap:wrap"><h1 style="flex:1">لوحة المعلم</h1><button class="btn" data-h="teacher">❓ شرح</button><button class="btn" data-d="refresh">تحديث</button><button class="btn" data-d="out">خروج</button></div>
+ <label>تصفية حسب الفصل<select id="fc"><option value="">كل الفصول</option>${cls.map(c=>`<option ${c==FC?"selected":""}>${esc(c)}</option>`).join("")}</select></label>
+ <div class="stats"><div class="box gr"><div class="big">${R.length}</div>طلاب</div><div class="box b"><div class="big">${done}</div>أكملوا الدرس</div><div class="box yl"><div class="big">${avg}%</div>متوسط الدرجات</div><div class="box"><div class="big">${A.length}</div>محاولات</div></div>
+ <h2>ترتيب الطلاب بالنقاط</h2><div style="overflow:auto"><table class="tb"><tr><th>#</th><th>الاسم</th><th>الفصل</th><th>النقاط</th><th>الأنشطة</th><th>الحالة</th><th>المحاولات</th></tr>${R.map((r,i)=>`<tr><td>${i+1}</td><td>${esc(r.name)}</td><td>${esc(r.cls)}</td><td>${r.points} / ${r.max}</td><td>${r.acts} / 6</td><td>${r.done?"✔ مكتمل":"… غير مكتمل"}</td><td>${r.n}</td></tr>`).join("")||"<tr><td colspan=7>لا توجد بيانات بعد.</td></tr>"}</table></div>
+ <h2>طلاب يحتاجون متابعة</h2>${weak.length?`<ul class="t">${weak.map(r=>`<li>${esc(r.name)} (${esc(r.cls)}): ${r.done?"درجته أقل من 50%":"لم يكمل الدرس"}</li>`).join("")}</ul>`:"<p>لا أحد حاليًا 👍</p>"}
+ <h2>أكثر الأسئلة غلطًا</h2>${ms.length?`<ol class="t">${ms.map(m=>`<li>${esc(qLabel(m[0]))} — ${m[1]} خطأ</li>`).join("")}</ol>`:"<p>لا توجد أخطاء مسجّلة.</p>"}
+ <h2>تعديل النقاط والأسئلة</h2><div class="r qe"><label>نقاط سؤال الاختيار<input id="pm" type="number" value="${D.ptsMcq}"></label><label>نقاط المطابقة<input id="pt" type="number" value="${D.ptsMatch}"></label></div>${qe}<button class="btn pri" data-d="save">حفظ التعديلات للطلاب</button> <span id="sm"></span></div>`}
+DS.addEventListener("change",e=>{if(e.target.id=="fc"){FC=e.target.value;drawDash()}});
+DS.addEventListener("click",async e=>{const t=e.target.closest("[data-d]");if(!t)return;const d=t.dataset.d;if(d=="out")logout();else if(d=="refresh")dash();
+ else if(d=="save"){const q=D.quiz.map(x=>Object.assign({},x));DS.querySelectorAll(".qe[data-qi]").forEach(b=>{const i=+b.dataset.qi,f=n=>{const el=b.querySelector(`[data-f="${n}"]`);return el?el.value:null};q[i].q=f("q");if(q[i].t=="s")q[i].m=f("m");else{q[i].h=f("h");q[i].e=f("e");q[i].a=Math.max(0,(+f("a")||1)-1);if(q[i].t=="m")q[i].o=[0,1,2,3].map(k=>f("o"+k))}});
+  const cfg={ptsMcq:+$("#pm").value||10,ptsMatch:+$("#pt").value||15,quiz:q};try{const r=await post({action:"saveConfig",token:U.token,config:cfg});if(r.error)throw 0;Object.assign(D,{quiz:q,ptsMcq:cfg.ptsMcq,ptsMatch:cfg.ptsMatch});D.max=D.ptsMcq*9+D.ptsMatch*4;$("#sm").textContent="✔ تم الحفظ"}catch(x){$("#sm").textContent="تعذّر الحفظ"}}});
+
+/* ===== شرح الموقع ===== */
+const HELP={student:["🎓 شرح الموقع للطالب",[["سجّل دخولك","اضغط «أنا طالب» ثم سجّل الدخول بحساب جوجل، وبعدها اكتب اسمك الكامل وفصلك."],["ابدأ الرحلة","الدرس 12 شاشة: تمهيد وخريطة وأهمية القارة ورحلات الاستكشاف وتقويم ختامي. تنقّل بزرّي «التالي» و«السابق»."],["ابن بطوطة مرشدك","يشرح لك كل شاشة بصوته وبالكتابة، ويشجّعك إذا أجبت إجابة صحيحة، ويلمّح لك إذا أخطأت. زر 🔊 يكتم الصوت أو يعيده."],["أجب واجمع النقاط","كل إجابة صحيحة تمنحك نقاطًا وتشاهد احتفالًا بالكونفيتي. وإذا أخطأت ستظهر لك إشارة تلميح لتحاول مرة أخرى."],["أدِر الكرة واستكشف الخريطة","أدِر الكرة الأرضية بإصبعك أو بالماوس، واضغط على الدوائر الوامضة في الخريطة."],["أكمل في أي وقت","إذا أغلقت الدرس فستختار بين أن تكمل من حيث توقفت أو تبدأ من جديد. ويطّلع معلمك على نتيجتك."],["احصل على الشارة","أكمل الأنشطة لتحصل على الشارة اللامعة في آخر الدرس."]]],
+teacher:["👨‍🏫 شرح لوحة المعلم",[["الدخول","اضغط «أنا معلم» واكتب كلمة السر. تُحدَّد الكلمة في Google Apps Script وليس في الصفحة، فلا يستطيع الطلاب الدخول."],["الأرقام الأساسية","في الأعلى ستجد عدد الطلاب، وعدد من أكملوا الدرس، ومتوسط الدرجات، وعدد المحاولات."],["ترتيب الطلاب","جدول مرتّب بالنقاط، يعرض الفصل والأنشطة المكتملة والحالة وعدد محاولات كل طالب."],["التصفية بالفصل","اختر فصلًا من القائمة لترى نتائجه فقط، أو «كل الفصول»."],["طلاب يحتاجون متابعة","يظهر هنا الطلاب الذين لم يكملوا الدرس أو درجتهم أقل من 50%."],["أكثر الأسئلة خطأً","أكثر 5 أسئلة أخطأ فيها الطلاب، لتراجعها معهم."],["تعديل الأسئلة والنقاط","عدّل نص السؤال والخيارات والإجابة الصحيحة والتلميح ونقاط كل نوع، ثم اضغط «حفظ التعديلات للطلاب» لتظهر لهم فورًا."],["تحديث وخروج","«تحديث» يجلب آخر النتائج، و«خروج» يغلق لوحة المعلم."]]]};
+let hOpener=null;
+function showHelp(k){const H=HELP[k]||HELP.student,el=$("#help");hOpener=document.activeElement;el.innerHTML=`<div class="hb"><h2 id="ht">${H[0]}</h2>${H[1].map((x,i)=>`<div class="hs" style="--d:${i*.07}s"><div class="hn">${i+1}</div><div><b>${x[0]}</b><span>${x[1]}</span></div></div>`).join("")}<button class="btn pri" data-hx="1" style="width:100%;margin-top:8px">فهمت، هيّا نبدأ</button></div>`;el.hidden=false;el.querySelector("[data-hx]").focus()}
+function closeHelp(){$("#help").hidden=true;if(hOpener&&hOpener.focus)hOpener.focus()}
+document.addEventListener("click",e=>{const h=e.target.closest("[data-h]");if(h)return showHelp(h.dataset.h);if(e.target.closest("[data-hx]")||e.target.id=="help")closeHelp()});
+document.addEventListener("keydown",e=>{if(e.key=="Escape"&&!$("#help").hidden)closeHelp()});
+if(RM_)try{$("#bg").pauseAnimations()}catch(e){}
+/* ===== البداية ===== */
+if(U&&U.role=="teacher")dash();else if(isS()&&U.name){GT.hidden=true;$("#out").hidden=false}else gate("choose");
+
+render();
+</script>
+</body>
+</html>
