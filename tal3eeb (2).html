@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>الدرس الأول: تركيب الذرة — مسابقة التلعيب</title>
+<link href="https://fonts.googleapis.com/css2?family=Lalezar&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+:root{--bg1:#0b2a6b;--card:#fff;--ink:#14213d;--title:#0b3d91;--line:#c9d8f2;--soft:#eaf2ff;--prot:#ff5a5f;--neut:#2ec4b6;--elec:#2d9cff;--gold:#ffc43d;--ok:#1fa971;--no:#e5484d;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*{box-sizing:border-box}html{scroll-padding-top:env(safe-area-inset-top,0px)}
+body{margin:0;min-height:100vh;padding:14px;color:var(--ink);font-family:'Cairo',Tahoma,sans-serif;line-height:1.7;
+background:radial-gradient(circle at 15% 8%,#2f86f0 0,transparent 38%),radial-gradient(circle at 90% 90%,#12a4a0 0,transparent 35%),linear-gradient(160deg,#0b2a6b,#124aa8 60%,#0e6f9b)}
+.bg{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+.bg svg{position:absolute;opacity:.16}
+.bg .a1{width:520px;right:-140px;top:-80px;animation:spin 60s linear infinite}
+.bg .a2{width:380px;left:-110px;bottom:-60px;animation:spin 80s linear infinite reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(prefers-reduced-motion:reduce){.bg svg,.hatom *{animation:none!important}}
+h1,h2,h3{font-family:'Lalezar','Cairo',sans-serif;color:var(--title);margin:0;font-weight:400}
+h2{font-size:1.9rem}h3{font-size:1.4rem;margin-bottom:6px}
+.wrap{position:relative;z-index:1;max-width:1050px;margin:auto}
+header{background:#fff;border-radius:28px;padding:16px 22px;display:flex;align-items:center;gap:18px;flex-wrap:wrap;box-shadow:0 8px 0 rgba(0,0,0,.18)}
+.hatom{width:84px;height:84px;flex:none}
+.htxt{flex:1;min-width:220px}
+.lesson-t{font-family:'Lalezar',sans-serif;font-size:clamp(30px,6vw,52px);line-height:1.1;color:var(--title)}
+.sub{display:inline-block;margin-top:6px;background:var(--gold);color:#4a3200;font-weight:900;border-radius:99px;padding:2px 16px}
+nav{display:flex;gap:10px;flex-wrap:wrap;margin:16px 0 8px}
+nav button{font:inherit;font-weight:900;font-size:1.1rem;border:0;border-radius:18px;padding:10px 22px;cursor:pointer;background:#fff;color:var(--title);box-shadow:0 5px 0 rgba(0,0,0,.2)}
+nav button.on{background:var(--gold);color:#4a3200;transform:translateY(-2px)}
+.steps{display:flex;gap:8px;flex-wrap:wrap;margin:8px 0}
+.stp{font:inherit;font-weight:900;border:0;border-radius:99px;padding:6px 18px 6px 14px;cursor:pointer;background:rgba(255,255,255,.85);color:var(--title)}
+.stp b{display:inline-grid;place-items:center;width:26px;height:26px;border-radius:50%;background:var(--elec);color:#fff;margin-left:8px;font-size:.9rem}
+.stp.on{background:var(--gold);color:#4a3200}.stp.on b{background:var(--prot)}
+.hint{background:#fff7d6;border:3px solid var(--gold);border-radius:18px;padding:10px 16px;font-weight:700;margin:8px 0}
+.btn{font:inherit;font-weight:900;border:0;border-radius:16px;padding:11px 22px;cursor:pointer;background:var(--elec);color:#fff;font-size:1rem;box-shadow:0 5px 0 #1a6cc0;transition:transform .08s,box-shadow .08s}
+.btn:hover:not(:disabled){transform:translateY(-2px);box-shadow:0 7px 0 #1a6cc0}
+.btn:active:not(:disabled){transform:translateY(4px);box-shadow:0 1px 0 #1a6cc0}
+.btn.alt{background:var(--soft);color:var(--title);box-shadow:0 5px 0 #b9cdee}
+.btn.ok{background:var(--ok);box-shadow:0 5px 0 #14825a}.btn.no{background:var(--no);box-shadow:0 5px 0 #b3323a}
+.btn.big{font-size:1.3rem;padding:16px 30px}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
+input,textarea,select{font:inherit;color:var(--ink);background:#fff;border:3px solid var(--line);border-radius:14px;padding:8px 12px;width:100%}
+input:focus,select:focus{border-color:var(--elec)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:14px}
+.panel{background:var(--card);border-radius:24px;padding:18px;margin-top:16px;box-shadow:0 6px 0 rgba(0,0,0,.14)}
+.hero{background:linear-gradient(135deg,#fff 0%,#eaf4ff 100%);text-align:center;padding:26px 18px}
+.hero p{font-size:1.15rem;max-width:640px;margin:8px auto 18px}
+.team{background:#fff;border-radius:22px;border-top:14px solid var(--c);padding:12px;box-shadow:0 5px 0 rgba(0,0,0,.14)}
+.sl input{margin-bottom:6px}.team .row{justify-content:center}.team .btn{padding:4px 16px}
+.row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.hide{display:none!important}
+.chip{font:inherit;font-weight:900;border:3px solid var(--line);background:#fff;color:var(--title);border-radius:99px;padding:6px 16px;cursor:pointer}
+.chip.on{background:var(--gold);border-color:var(--gold);color:#4a3200}
+.chip:disabled{opacity:.55;cursor:not-allowed}
+.tchip::before{content:'';display:inline-block;width:14px;height:14px;border-radius:50%;background:var(--c);margin-left:8px;vertical-align:-1px}
+.tchip.on{box-shadow:0 0 0 4px var(--c)}
+.qcard{background:linear-gradient(135deg,#eaf4ff,#fff);border:4px solid var(--elec);border-radius:24px;padding:22px;text-align:center;min-height:150px;display:flex;flex-direction:column;justify-content:center;gap:10px}
+.qcard .q{font-size:1.6rem;font-weight:900;line-height:1.6}
+.timer{font-family:'Lalezar',sans-serif;font-size:2.8rem;color:var(--prot);background:var(--soft);border-radius:18px;padding:0 18px;min-width:110px;text-align:center}
+.opts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:14px}
+@media(max-width:560px){.opts{grid-template-columns:1fr}}
+.opt{font:inherit;font-weight:900;font-size:1.2rem;padding:12px;border:3px solid var(--line);border-radius:18px;background:#fff;color:var(--ink);box-shadow:0 4px 0 var(--line);cursor:pointer}
+.opt:hover{border-color:var(--elec)}.opt.sel{background:var(--gold);border-color:var(--gold);transform:translateY(3px);box-shadow:0 1px 0 #d9a21d}
+.numin{font-size:1.6rem;font-weight:900;text-align:center;direction:ltr;margin-top:6px}
+.mrow{display:flex;gap:10px;align-items:center;margin:10px 0;flex-wrap:wrap}
+.tw{overflow-x:auto}
+table{width:100%;border-collapse:collapse}
+th,td{padding:9px 12px;text-align:right;border-bottom:2px solid var(--soft);white-space:nowrap}
+.lesson th,.lesson td,.panel table.wrapok th,.panel table.wrapok td{white-space:normal}
+th{background:var(--soft);color:var(--title)}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px;margin:16px 0 0}
+.stat{border-radius:22px;padding:12px;text-align:center;font-weight:900;background:#dff1ff;box-shadow:0 5px 0 rgba(0,0,0,.12)}
+.stat:nth-child(2){background:#d9f7f2}.stat:nth-child(3){background:#fff1c9}.stat:nth-child(4){background:#ffe0e1}.stat:nth-child(5){background:#ece4ff}
+.stat b{display:block;font-family:'Lalezar',sans-serif;font-size:2.2rem;color:var(--title);font-weight:400}
+.bar{display:flex;align-items:center;gap:10px;margin:8px 0}
+.bar i{display:block;height:26px;border-radius:99px;min-width:8px;transition:width .5s}
+.bar span{min-width:110px;font-weight:700}
+.tag{display:inline-block;background:#fff;border:2px solid var(--line);border-radius:99px;padding:2px 12px;margin:2px;font-weight:700}
+.log{max-height:200px;overflow:auto;font-size:.92rem}
+.log div{padding:4px 0;border-bottom:1px dashed var(--line)}
+.ans{color:#05713a;font-weight:900}
+small{opacity:.85}
+.guide{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px;margin-top:10px}
+.gc{background:var(--soft);border-radius:20px;padding:14px;position:relative}
+.gc .n{position:absolute;top:-12px;right:14px;width:34px;height:34px;border-radius:50%;background:var(--prot);color:#fff;display:grid;place-items:center;font-family:'Lalezar',sans-serif;font-size:1.3rem}
+.gc b{display:block;margin:10px 0 4px;color:var(--title);font-size:1.15rem}
+.lesson ul{margin:6px 0;padding-right:22px}
+.two{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.box{background:var(--soft);border-radius:18px;padding:12px}
+.tip{background:#fff7d6;border:3px dashed var(--gold);border-radius:16px;padding:10px 14px;margin-top:10px;font-weight:700}
+.eq{background:#e9fbf3;border:3px solid var(--neut);border-radius:16px;padding:10px 14px;margin:8px 0;font-weight:900;text-align:center}
+.pp{display:inline-block;border-radius:99px;padding:0 12px;color:#fff;font-weight:900}
+.pp.p{background:var(--prot)}.pp.n{background:var(--neut)}.pp.e{background:var(--elec)}
+
+.credits{display:flex;gap:8px 18px;flex-wrap:wrap;margin-top:8px;color:#4b5b7c;font-weight:700;font-size:.95rem}.credits b{color:var(--title)}
+.foot{margin:22px 0 8px;text-align:center;color:#fff;font-weight:700;opacity:.9}
+.tbanner{background:#fff7d6;border:3px solid var(--gold);border-radius:18px;padding:10px 16px;margin-top:14px;font-weight:900;text-align:center;color:#4a3200;box-shadow:0 4px 0 rgba(0,0,0,.14)}
+.pgnav{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:16px;background:#fff;border-radius:22px;padding:10px 14px;box-shadow:0 5px 0 rgba(0,0,0,.14)}
+.dots{display:flex;gap:8px;align-items:center;justify-content:center;flex-wrap:wrap}
+.dot{width:14px;height:14px;padding:0;border-radius:50%;border:0;background:var(--line);cursor:pointer}
+.dot.on{background:var(--elec);transform:scale(1.35)}
+.pgc{font-weight:900;color:var(--title);min-width:54px;text-align:center}
+</style>
+</head>
+<body>
+<div class="bg" aria-hidden="true"><svg class="a1" viewBox="0 0 100 100"><g fill="none" stroke="#fff" stroke-width="1.5"><g><ellipse cx="50" cy="50" rx="44" ry="16"/><circle cx="94" cy="50" r="5" fill="#fff" stroke="none"/></g><g transform="rotate(60 50 50)"><ellipse cx="50" cy="50" rx="44" ry="16"/><circle cx="94" cy="50" r="5" fill="#fff" stroke="none"/></g><g transform="rotate(120 50 50)"><ellipse cx="50" cy="50" rx="44" ry="16"/><circle cx="94" cy="50" r="5" fill="#fff" stroke="none"/></g><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="14s" repeatCount="indefinite"/></g><circle cx="50" cy="50" r="8" fill="#fff"/></svg><svg class="a2" viewBox="0 0 100 100"><g fill="none" stroke="#fff" stroke-width="1.5"><g><ellipse cx="50" cy="50" rx="44" ry="16"/><circle cx="94" cy="50" r="5" fill="#fff" stroke="none"/></g><g transform="rotate(60 50 50)"><ellipse cx="50" cy="50" rx="44" ry="16"/><circle cx="94" cy="50" r="5" fill="#fff" stroke="none"/></g><g transform="rotate(120 50 50)"><ellipse cx="50" cy="50" rx="44" ry="16"/><circle cx="94" cy="50" r="5" fill="#fff" stroke="none"/></g><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="14s" repeatCount="indefinite"/></g><circle cx="50" cy="50" r="8" fill="#fff"/></svg></div>
+<div class="wrap">
+<header><svg class="hatom" viewBox="0 0 100 100" aria-hidden="true"><g fill="none" stroke="#2d9cff" stroke-width="2.5"><g><ellipse cx="50" cy="50" rx="44" ry="16"/><circle cx="94" cy="50" r="5" fill="#2d9cff" stroke="none"/></g><g transform="rotate(60 50 50)"><ellipse cx="50" cy="50" rx="44" ry="16"/><circle cx="94" cy="50" r="5" fill="#2d9cff" stroke="none"/></g><g transform="rotate(120 50 50)"><ellipse cx="50" cy="50" rx="44" ry="16"/><circle cx="94" cy="50" r="5" fill="#2d9cff" stroke="none"/></g><animateTransform attributeName="transform" type="rotate" from="0 50 50" to="360 50 50" dur="14s" repeatCount="indefinite"/></g><circle cx="46" cy="47" r="7" fill="#ff5a5f"/><circle cx="55" cy="49" r="7" fill="#2ec4b6"/><circle cx="49" cy="56" r="7" fill="#ff5a5f"/><circle cx="52" cy="42" r="6" fill="#2ec4b6"/></svg><div class="htxt"><div class="lesson-t">الدرس الأول: تركيب الذرة</div><div class="sub">مسابقة التلعيب · تحدي تركيب الذرة</div><div class="credits"><span>إعداد: <b>عبدالرحمن علي فتحي</b></span><span>تحت إشراف: <b>أ. فاطمة</b></span></div></div>
+<div class="row"><span class="tag" id="sv">💾 محفوظ على الجهاز</span><a class="btn alt" style="text-decoration:none" href="https://docs.google.com/spreadsheets/d/1hl3IKbnzsshHaHimxrCfyPrkPRfTt4aEX8VtRq2aFK4/edit" target="_blank" rel="noopener">📄 الشيت</a><button class="btn alt" id="reset">مسح كل البيانات</button></div></header>
+<div class="tbanner">🧑‍🏫 تنبيه: هذا الموقع مخصص للمعلم فقط وليس للطالب — المعلم هو الذي يديره ويعرضه على الشاشة.</div>
+<nav id="nav"><button data-t="home" class="on">🏠 الرئيسية</button><button data-t="content">📖 المحتوى</button><button data-t="comp">🎮 المسابقة</button></nav>
+<div class="steps hide" id="stepsbar"><button class="stp" data-s="setup"><b>١</b>الإعداد</button><button class="stp" data-s="game"><b>٢</b>اللعب</button><button class="stp" data-s="dash"><b>٣</b>النتائج</button></div>
+<div class="hint hide" id="hint"></div>
+
+<section id="home">
+<div class="panel hero"><h2>أهلًا بك في تحدي تركيب الذرة ⚛️</h2>
+<p>مسابقة بين الفرق عن درس «تركيب الذرة». اقرأ المحتوى مع الطلاب أولًا، وبعدها ابدأ المسابقة. اتنقل بين الصفحات بزراري «التالي» و«السابق».</p>
+<div class="row" style="justify-content:center"><button class="btn big" data-go="content">📖 المحتوى</button><button class="btn big ok" data-go="comp">🎮 المسابقة</button></div></div>
+<div class="panel"><h3>🧭 إزاي تشتغل؟ (٤ خطوات)</h3><div class="guide">
+<div class="gc"><span class="n">١</span><b>اشرح الدرس</b>افتح زرار «المحتوى» واشرح الذرة والبروتون والنيوترون والإلكترون والعدد الذري والكتلي.</div>
+<div class="gc"><span class="n">٢</span><b>جهّز الفرق</b>من «المسابقة ← الإعداد» اختر عدد الفرق وعدد الطلاب، واكتب اسم كل طالب في خانته، وحدد عدد الأسئلة لكل فريق.</div>
+<div class="gc"><span class="n">٣</span><b>العبوا</b>اختر الفريق اللي هيدخل، واختر الطالب، واضغط «ابدأ». هنا بيبدأ وقت الطالب ويظهر السؤال، وبعدها سجّل إجابته وأكّد.</div>
+<div class="gc"><span class="n">٤</span><b>شوف النتائج</b>بعد آخر جولة بتظهر الإجابات الصحيحة وترتيب الفرق وتحليل كل طالب، وبتتبعت النتائج لـ Google Sheets تلقائيًا.</div></div></div>
+<div class="panel"><h3>🏆 نظام المسابقة</h3><ul style="padding-right:22px;margin:6px 0">
+<li>كل فريق <b>يدخل بدوره ويحل أسئلته كلها</b>، وأسئلة كل فريق مختلفة عن باقي الفرق.</li>
+<li>كل سؤال يجاوب عليه <b>طالب</b>، ولكل طالب <b>وقته الخاص</b> يبدأ لما تضغط زر «ابدأ».</li>
+<li>الأسئلة بتترتب من <b>الأسهل للأصعب</b>، وبتتغير كل مسابقة جديدة.</li>
+<li>الفريق صاحب أعلى نقاط في النهاية هو الفائز، ولو تعادلوا بيفوز الأسرع في وقت التفكير.</li>
+<li>كل طالب بيتسجل اسمه، فنعرف مين شارك ومين جاوب صح.</li></ul></div>
+<div class="panel"><h3>❓ أنواع الأسئلة</h3><div class="tw"><table class="wrapok"><thead><tr><th>النوع</th><th>إزاي بيتجاوب؟</th></tr></thead><tbody>
+<tr><td><b>اختيار من متعدد</b></td><td>اختيار إجابة واحدة من أربعة.</td></tr>
+<tr><td><b>صح أم خطأ</b></td><td>اختيار «صح» أو «خطأ».</td></tr>
+<tr><td><b>⭐ اكتب الرقم</b> (تفاعلي)</td><td>مسألة بسيطة، والطالب يكتب الناتج بنفسه.</td></tr>
+<tr><td><b>⭐ مطابقة</b> (تفاعلي)</td><td>ربط كل عنصر بمعناه من قائمة منسدلة.</td></tr></tbody></table></div></div>
+<div class="panel"><h3>⭐ نظام النقاط والشارات</h3><div class="tw"><table class="wrapok"><thead><tr><th>مستوى السؤال</th><th>النقاط</th></tr></thead><tbody>
+<tr><td>سؤال سهل</td><td>١ نقطة</td></tr><tr><td>سؤال متوسط أو مسألة</td><td>٢ نقطة</td></tr><tr><td>تحدٍّ صعب</td><td>٣ نقاط</td></tr></tbody></table></div>
+<p style="margin-top:8px">🥉 شارة برونزية من نقطتين &nbsp; 🥈 فضية من ٤ نقاط &nbsp; 🥇 ذهبية من ٦ نقاط</p></div>
+<div class="panel"><h3>📋 قواعد المسابقة العادلة</h3><ul style="padding-right:22px;margin:6px 0">
+<li>لا يجاوب نفس الطالب مرتين متتاليتين، عشان الكل يشارك.</li>
+<li>الفريق يتناقش بصوت منخفض ويختار طالب يجاوب.</li>
+<li>لا نقاطع الفريق صاحب الدور.</li>
+<li>الإجابات الصحيحة بتظهر في النهاية بس.</li></ul></div>
+</section>
+
+<section id="content" class="hide">
+<div class="panel lesson"><h2>📖 الدرس الأول: تركيب الذرة</h2>
+<p>تتكون جميع المواد من وحدات صغيرة جدًا تسمى <b>الذرات</b>. وتحتوي الذرة على <b>نواة</b> توجد في مركزها، وتتحرك حولها <b>الإلكترونات</b> في مستويات طاقة مختلفة.</p>
+<h3>🎯 أهداف الدرس</h3><ul><li>يعرّف الذرة.</li><li>يذكر مكونات الذرة ويحدد مكونات النواة.</li><li>يميز بين البروتون والنيوترون والإلكترون ويحدد شحنة كل جسيم.</li><li>يوضح معنى العدد الذري.</li><li>يحسب العدد الكتلي بطريقة بسيطة.</li><li>يحدد عدد الإلكترونات في الذرة المتعادلة.</li></ul></div>
+<div class="panel lesson"><h3>أولًا: ما الذرة؟</h3><p>الذرة هي <b>أصغر وحدة بناء للمادة</b>، وتدخل الذرات في تكوين جميع المواد حولنا: الماء، والهواء، والصخور والمعادن، وجسم الإنسان.</p></div>
+<div class="panel lesson"><h3>ثانيًا: تركيب الذرة</h3><p>تتكون الذرة من جزأين أساسيين:</p><div class="two">
+<div class="box"><b>١) النواة</b><br>توجد في مركز الذرة وتحتوي على البروتونات والنيوترونات، وتتركز فيها معظم كتلة الذرة.</div>
+<div class="box"><b>٢) الإلكترونات</b><br>جسيمات صغيرة تتحرك حول النواة في مستويات تسمى مستويات الطاقة.</div></div></div>
+<div class="panel lesson"><h3>ثالثًا: جسيمات الذرة</h3><div class="tw"><table><thead><tr><th>الجسيم</th><th>مكان وجوده</th><th>شحنته</th></tr></thead><tbody>
+<tr><td><span class="pp p">البروتون</span></td><td>داخل النواة</td><td>موجبة</td></tr>
+<tr><td><span class="pp n">النيوترون</span></td><td>داخل النواة</td><td>متعادلة</td></tr>
+<tr><td><span class="pp e">الإلكترون</span></td><td>حول النواة</td><td>سالبة</td></tr></tbody></table></div>
+<div class="tip">💡 طريقة سهلة للتذكر: بروتون = موجب · إلكترون = سالب · نيوترون = متعادل</div></div>
+<div class="panel lesson"><h3>رابعًا: العدد الذري</h3><p>العدد الذري هو <b>عدد البروتونات</b> الموجودة داخل نواة الذرة.</p><div class="eq">مثال: ذرة بها 6 بروتونات ← العدد الذري = 6</div><p>ويتميز كل عنصر عن غيره بعدده الذري.</p></div>
+<div class="panel lesson"><h3>خامسًا: الذرة المتعادلة</h3><p>هي الذرة التي يتساوي فيها عدد البروتونات مع عدد الإلكترونات.</p><div class="eq">مثال: ذرة متعادلة بها 8 بروتونات ← عدد الإلكترونات = 8</div></div>
+<div class="panel lesson"><h3>سادسًا: العدد الكتلي</h3><div class="eq">العدد الكتلي = عدد البروتونات + عدد النيوترونات</div><div class="eq">مثال: 5 بروتونات + 6 نيوترونات ← العدد الكتلي = 5 + 6 = 11</div></div>
+<div class="panel lesson"><h3>✅ ملخص الدرس</h3><ul><li>المادة تتكون من ذرات، والذرة تتكون من نواة وإلكترونات.</li><li>النواة تحتوي على البروتونات والنيوترونات.</li><li>البروتون موجب، والنيوترون متعادل، والإلكترون سالب.</li><li>العدد الذري يساوي عدد البروتونات.</li><li>في الذرة المتعادلة: عدد البروتونات = عدد الإلكترونات.</li><li>العدد الكتلي = عدد البروتونات + عدد النيوترونات.</li></ul></div>
+<div class="panel lesson"><h3>📚 قاموس المصطلحات</h3><div class="tw"><table><thead><tr><th>المصطلح</th><th>معناه</th></tr></thead><tbody>
+<tr><td><b>المادة</b></td><td>كل ما له كتلة ويشغل حيزًا من الفراغ</td></tr><tr><td><b>الذرة</b></td><td>أصغر وحدة بناء للمادة</td></tr>
+<tr><td><b>النواة</b></td><td>مركز الذرة وتحتوي على البروتونات والنيوترونات</td></tr><tr><td><b>البروتون</b></td><td>جسيم موجب يوجد داخل النواة</td></tr>
+<tr><td><b>النيوترون</b></td><td>جسيم متعادل يوجد داخل النواة</td></tr><tr><td><b>الإلكترون</b></td><td>جسيم سالب يتحرك حول النواة</td></tr>
+<tr><td><b>العدد الذري</b></td><td>عدد البروتونات في نواة الذرة</td></tr><tr><td><b>العدد الكتلي</b></td><td>مجموع عدد البروتونات والنيوترونات</td></tr>
+<tr><td><b>الذرة المتعادلة</b></td><td>ذرة يتساوى فيها عدد البروتونات والإلكترونات</td></tr><tr><td><b>مستوى الطاقة</b></td><td>المنطقة التي تتحرك فيها الإلكترونات حول النواة</td></tr></tbody></table></div></div>
+<div class="row" style="justify-content:center;margin-top:16px"><button class="btn big ok" data-go="comp">🎮 ابدأ المسابقة</button></div>
+</section>
+
+<section id="setup" class="hide">
+<div class="panel"><h3>١) حدّد الأعداد</h3><div class="row"><label for="nt"><b>عدد الفرق:</b></label><input id="nt" type="number" min="2" max="12" value="5" style="width:90px"><label for="ns"><b>عدد الطلاب في كل فريق:</b></label><input id="ns" type="number" min="1" max="60" value="9" style="width:90px"><label for="nq" id="nql"><b>عدد الأسئلة لكل فريق:</b></label><input id="nq" type="number" min="1" max="38" value="3" style="width:90px"><button class="btn" id="gen">إنشاء الفرق</button></div>
+<small>تحت كل فريق خانة لكل طالب يكتب فيها اسمه. تقدر تزود أو تقلل خانات أي فريق بزرار + و −.</small></div>
+<div class="panel"><b>ربط Google Sheets</b><div class="row" style="margin-top:8px"><input id="surl" placeholder="رابط Apps Script اللي بينتهي بـ /exec" style="direction:ltr;flex:1;min-width:220px"><button class="btn alt" id="spush" type="button">إرسال تجريبي</button><a class="btn alt" style="text-decoration:none" href="https://docs.google.com/spreadsheets/d/1hl3IKbnzsshHaHimxrCfyPrkPRfTt4aEX8VtRq2aFK4/edit" target="_blank" rel="noopener">📄 فتح الشيت</a></div><small id="sst">النتائج بتتبعت للشيت تلقائيًا أول ما المسابقة تخلص، وكل مسابقة بتتسجل في ورقة جديدة باسمها وتاريخها.</small></div>
+<div class="grid" id="teams" style="margin-top:16px"></div>
+<div class="row" style="margin-top:16px"><button class="btn ok big" id="start">حفظ وبدء المسابقة ▶</button><b id="smsg" style="color:#fff"></b></div>
+</section>
+
+<section id="game" class="hide">
+<div class="panel"><div class="row" style="justify-content:space-between"><b id="prog"></b><button class="btn alt" id="fin">إنهاء وكشف الإجابات</button></div></div>
+<div class="panel"><b>اختر الفريق الذي سيدخل</b><div class="row" id="tpick" style="margin-top:8px"></div>
+<div class="row" style="margin-top:12px"><label for="stu"><b>الطالب:</b></label><select id="stu" style="max-width:260px"></select><small>لا يجيب نفس الطالب مرتين متتاليتين</small></div></div>
+<div class="panel"><div class="row" style="justify-content:space-between"><b id="tl">وقت الطالب</b><div class="timer" id="tm">00:00</div><button class="btn alt hide" id="tgo">إيقاف مؤقت</button></div>
+<div id="startbox" style="text-align:center;margin-top:14px"><p id="stinfo" style="font-weight:700;margin:0 0 12px"></p><button class="btn ok big" id="startq" type="button">▶ ابدأ</button></div>
+<div id="qwrap" class="hide">
+<div class="qcard" style="margin-top:12px"><div class="q" id="qtxt" style="white-space:pre-line"></div></div>
+<div id="ans"></div>
+<div class="row" style="margin-top:14px"><button class="btn ok" id="next" disabled>تأكيد الإجابة</button><small>الإجابات الصحيحة لن تظهر إلا في النهاية.</small></div></div></div>
+<div class="panel"><b>من شارك حتى الآن</b><div class="log" id="log"></div></div>
+</section>
+
+<section id="dash" class="hide"></section>
+<footer class="foot">إعداد: عبدالرحمن علي فتحي · تحت إشراف: أ. فاطمة</footer>
+</div>
+<iframe name="sheetframe" id="sheetframe" title="sheet" style="display:none"></iframe>
+<script>
+var COLORS=['#ff5a5f','#2d9cff','#2ec4b6','#ffc43d','#9b5de5','#ff8c42','#f15bb5','#00bbf9','#8ac926','#b5838d','#6c757d','#06d6a0'];
+var NAMES=['البروتون','الإلكترون','النيوترون','النواة','الذرة','المادة','العنصر','الطاقة','الكتلة','الشحنة','الجسيم','المدار'];
+var TYPES={mc:'اختيار من متعدد',tf:'صح أم خطأ',num:'تفاعلي: اكتب الرقم',match:'تفاعلي: مطابقة'};
+function M(q,o,a,p){return{t:'mc',q:q,o:o,a:a,p:p}}
+function TF(q,a,p){return{t:'tf',q:q,o:['صح','خطأ'],a:a?0:1,p:p}}
+var QSB=[
+M('ما أصغر وحدة بناء للمادة؟',['الذرة','النواة','الإلكترون','الجزيء'],0,1),
+M('ما الجسيم ذو الشحنة الموجبة؟',['الإلكترون','النيوترون','البروتون','الذرة'],2,1),
+M('أين توجد الإلكترونات؟',['داخل النواة','تدور حول النواة','داخل النيوترون','داخل البروتون'],1,1),
+M('ما شحنة الإلكترون؟',['موجبة','متعادلة','تتغير','سالبة'],3,1),
+M('ما الجسيم المتعادل الشحنة؟',['البروتون','النيوترون','الإلكترون','الأيون'],1,1),
+M('ما مكونات النواة؟',['إلكترونات وبروتونات','إلكترونات ونيوترونات','بروتونات ونيوترونات','إلكترونات فقط'],2,1),
+M('العدد الذري يساوي عدد:',['النيوترونات','البروتونات','الإلكترونات والنيوترونات','البروتونات والنيوترونات'],1,1),
+M('أي مما يلي يوجد داخل نواة الذرة؟',['الإلكترون فقط','النيوترون','الجزيء','الأيون'],1,1),
+M('إذا كان عدد البروتونات 6، فما العدد الذري؟',['3','12','6','18'],2,2),
+M('في الذرة المتعادلة، عدد الإلكترونات يساوي:',['عدد البروتونات','عدد النيوترونات','العدد الكتلي','صفر'],0,2),
+M('إذا كان عدد البروتونات 5 وعدد النيوترونات 6، فما العدد الكتلي؟',['5','6','1','11'],3,2),
+M('ما عدد الإلكترونات في ذرة متعادلة بها 3 بروتونات؟',['0','3','6','1'],1,2),
+M('ما شحنة نواة الذرة؟',['سالبة','متعادلة','موجبة','تتغير'],2,2),
+M('إذا كان العدد الكتلي 12 وعدد البروتونات 6، فما عدد النيوترونات؟',['6','12','18','0'],0,2),
+M('أي الجسيمات التالية كتلته صغيرة جدًا؟',['الإلكترون','البروتون','النيوترون','النواة'],0,2),
+M('الذرة متعادلة لأن:',['عدد البروتونات = عدد الإلكترونات','عدد النيوترونات = عدد البروتونات','لا تحتوي على شحنات','تحتوي على إلكترونات فقط'],0,2),
+M('ذرة تحتوي على 8 بروتونات و8 نيوترونات. ما عددها الكتلي؟',['8','24','16','0'],2,3),
+M('ذرة عددها الذري 7 وعدد نيوتروناتها 7. كم عدد إلكتروناتها وهي متعادلة؟',['14','7','0','21'],1,3),
+M('ذرة بها 9 بروتونات و10 نيوترونات. ما عددها الكتلي؟',['19','9','10','1'],0,3),
+M('ذرة متعادلة عددها الكتلي 23 وعدد نيوتروناتها 12. كم عدد إلكتروناتها؟',['12','11','23','35'],1,3),
+TF('الإلكترون يوجد داخل النواة.',false,1),
+TF('البروتون شحنته موجبة.',true,1),
+TF('النيوترون متعادل الشحنة.',true,1),
+TF('العدد الذري يساوي عدد النيوترونات.',false,2),
+TF('في الذرة المتعادلة، عدد البروتونات يساوي عدد الإلكترونات.',true,1),
+{t:'num',q:'ذرة بها 6 بروتونات و6 نيوترونات. اكتب عددها الكتلي.',a:'12',p:2},
+{t:'num',q:'ذرة متعادلة بها 11 بروتونًا. اكتب عدد إلكتروناتها.',a:'11',p:2},
+{t:'num',q:'ذرة بها 8 بروتونات و8 نيوترونات. اكتب عددها الذري.',a:'8',p:2},
+{t:'num',q:'ذرة عددها الكتلي 14 وعدد بروتوناتها 7. اكتب عدد النيوترونات.',a:'7',p:3},
+{t:'match',q:'اربط كل جسيم بشحنته.',l:['البروتون','النيوترون','الإلكترون'],r:['موجبة','متعادلة','سالبة'],p:2},
+{t:'match',q:'اربط كل مصطلح بمعناه.',l:['العدد الذري','العدد الكتلي','الذرة المتعادلة'],r:['عدد البروتونات','عدد البروتونات + عدد النيوترونات','عدد الإلكترونات = عدد البروتونات'],p:3},
+M('أين تتركز معظم كتلة الذرة؟',['حول النواة','داخل النواة','خارج الذرة','في الإلكترونات'],1,1),
+TF('النواة توجد في مركز الذرة.',true,1),
+TF('النيوترون سالب الشحنة.',false,1),
+TF('العدد الكتلي يساوي عدد البروتونات فقط.',false,2),
+TF('الإلكترونات تتحرك حول النواة.',true,1),
+{t:'num',q:'إذا كان عدد البروتونات 7، فما العدد الذري؟ اكتب الرقم.',a:'7',p:1},
+{t:'num',q:'ذرة متعادلة بها 8 بروتونات. اكتب عدد إلكتروناتها.',a:'8',p:1}
+];
+var S={teams:[],log:[],tq:null,n:0,r:0,done:false},cur={t:0,acc:0,since:null,st:0,sv:'',svT:-1},pick=null,mv=[],curTab='home',svT=null,shT=null,sending=false;
+var CAP={db:null,dl:null,sample:null,owner:true};
+var DEFAULT_URL='https://script.google.com/macros/s/AKfycbzCMMjbaOe4YEoBWBNaXqzvkqHViAgw3FM8EfLi3wkj_IG5d4OifAY6K0hXL2bnX-eo/exec',SHEET_URL=DEFAULT_URL;
+var $=function(i){return document.getElementById(i)};
+function esc(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML}
+function sv(t){var e=$('sv');if(e)e.textContent=t}
+try{var raw=localStorage.getItem('tal3eeb3');if(raw)S=JSON.parse(raw);SHEET_URL=localStorage.getItem('tal3eeb_url4')||DEFAULT_URL}catch(e){}
+function save(){S.ts=Date.now();try{localStorage.setItem('tal3eeb3',JSON.stringify(S))}catch(e){}
+ if(CAP.db){clearTimeout(svT);svT=setTimeout(function(){CAP.db.doc('state/main').set({json:JSON.stringify(S)}).then(function(){sv('☁️ تم الحفظ على السحابة')}).catch(function(){sv('💾 محفوظ على الجهاز فقط')})},800)}}
+function shuf(a){a=a.slice();for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)),x=a[i];a[i]=a[j];a[j]=x}return a}
+function idx(n){var o=[];for(var i=0;i<n;i++)o.push(i);return o}
+function mkOrder(n,T){n=Math.max(1,Math.min(QSB.length,+n||1));S.tq=[];
+ for(var t=0;t<T;t++){var ix=shuf(idx(QSB.length)).slice(0,n).sort(function(a,b){return QSB[a].p-QSB[b].p});
+  S.tq.push(ix.map(function(b){var q=QSB[b],pm=null;if(q.t==='mc')pm=shuf(idx(q.o.length));else if(q.t==='match')pm=shuf(idx(q.r.length));return{b:b,perm:pm}}))}
+ S.n=n;S.r=0;S.runId=Date.now();S.done=false;pick=null;mv=[];cur.t=0;cur.acc=0;cur.since=null;cur.st=0}
+function Q(ti,r){var x=S.tq&&S.tq[ti]&&S.tq[ti][r];return x?{b:x.b,perm:x.perm,q:QSB[x.b]}:null}
+function prog(ti){return S.log.filter(function(l){return l.ti===ti}).length}
+function tdone(i){return prog(i)>=S.n}
+function nextTeam(){var T=S.teams.length;for(var k=1;k<=T;k++){var i=(cur.t+k)%T;if(!tdone(i))return i}return -1}
+function dn(s){return String(s).replace(/[٠-٩]/g,function(d){return '٠١٢٣٤٥٦٧٨٩'.indexOf(d)}).trim()}
+function isRight(q,ch){if(q.t==='num')return dn(ch)!==''&&Number(dn(ch))===Number(q.a);if(q.t==='match')return String(ch)===idx(q.l.length).join(',');return ch===q.a}
+function ansText(q,ch){if(q.t==='num')return String(ch);if(q.t==='match')return q.l.map(function(x,i){return x+' ← '+q.r[+String(ch).split(',')[i]]}).join('، ');return q.o[ch]}
+function okText(q){if(q.t==='num')return q.a;if(q.t==='match')return q.l.map(function(x,i){return x+' ← '+q.r[i]}).join('، ');return q.o[q.a]}
+function compute(){S.teams.forEach(function(t){t.pts=0;t.students.forEach(function(s){s.cor=0;s.pts=0})});
+ S.log.forEach(function(l){var q=QSB[l.b],t=S.teams[l.ti],s=t&&t.students.filter(function(x){return x.name===l.sn})[0];if(q&&s&&isRight(q,l.ch)){s.cor++;s.pts+=q.p;t.pts+=q.p}})}
+
+/* dialog */
+function dlg(msg,ok){var o=document.createElement('div');o.style.cssText='position:fixed;inset:0;z-index:99;background:rgba(0,0,0,.55);display:grid;place-items:center;padding:16px';
+ o.innerHTML='<div class="panel" style="max-width:420px;text-align:center"><p style="font-weight:900;font-size:1.2rem;margin:0 0 14px"></p><div class="row"></div></div>';
+ o.querySelector('p').textContent=msg;var r=o.querySelector('.row');
+ function bt(t,c,f){var x=document.createElement('button');x.type='button';x.className='btn '+c;x.textContent=t;x.onclick=function(){o.remove();if(f)f()};r.appendChild(x)}
+ bt(ok?'تأكيد':'حسنًا',ok?'ok':'alt',ok);if(ok)bt('إلغاء','alt');document.body.appendChild(o)}
+
+/* tabs */
+var HINTS={setup:'الخطوة ١ من ٣ — جهّز المسابقة: اختر عدد الفرق وعدد الطلاب، واكتب اسم كل طالب في خانته، وحدد عدد الأسئلة لكل فريق، ثم اضغط «حفظ وبدء المسابقة».',
+ game:'الخطوة ٢ من ٣ — العبوا: اختر الفريق، ثم الطالب، واضغط «ابدأ» فيبدأ وقت الطالب ويظهر السؤال. سجّل إجابته ثم «تأكيد الإجابة». كل فريق يحل أسئلته كلها قبل ما يدخل الفريق اللي بعده، والإجابات الصحيحة مخفية لحد النهاية.',
+ dash:'الخطوة ٣ من ٣ — النتائج: بعد انتهاء كل الجولات تظهر الإجابات الصحيحة والتحليل، وبتتبعت النتائج للشيت تلقائيًا في ورقة جديدة.'};
+function tab(t){curTab=t;if(t!=='game'&&cur.st===1){pauseT();cur.st=2}['home','content','setup','game','dash'].forEach(function(x){$(x).classList.toggle('hide',x!==t)});
+ var comp=['setup','game','dash'].indexOf(t)>=0;
+ document.querySelectorAll('#nav button').forEach(function(b){b.classList.toggle('on',b.dataset.t===(comp?'comp':t))});
+ $('stepsbar').classList.toggle('hide',!comp);
+ document.querySelectorAll('.stp').forEach(function(b){b.classList.toggle('on',b.dataset.s===t)});
+ $('hint').textContent=HINTS[t]||'';$('hint').classList.toggle('hide',!HINTS[t]);
+ if(t==='game')drawGame();if(t==='dash')drawDash();window.scrollTo(0,0)}
+function goTo(t){if(t==='comp')tab(S.done?'dash':(S.tq&&S.teams.length?'game':'setup'));else tab(t)}
+$('nav').onclick=function(e){var b=e.target.closest('[data-t]');if(b)goTo(b.dataset.t)};
+$('stepsbar').onclick=function(e){var b=e.target.closest('[data-s]');if(b)tab(b.dataset.s)};
+document.addEventListener('click',function(e){var g=e.target.closest('[data-go]');if(g)goTo(g.dataset.go)});
+
+/* setup */
+function collect(){var o=[];document.querySelectorAll('.team').forEach(function(c){o.push({name:c.querySelector('.tn').value,students:[].map.call(c.querySelectorAll('.sn'),function(x){return{name:x.value}})})});return o}
+function teamsForm(list){
+ $('teams').innerHTML=list.map(function(t,i){return '<div class="team" style="--c:'+COLORS[i%12]+'"><input class="tn" aria-label="اسم الفريق" value="'+esc(t.name).replace(/"/g,'&quot;')+'"><div class="row" style="margin:8px 0"><button type="button" class="btn alt mn" aria-label="إنقاص خانة">−</button><b class="cnt"></b><button type="button" class="btn alt pl" aria-label="إضافة خانة">+</button></div><div class="sl"></div></div>'}).join('');
+ document.querySelectorAll('.team').forEach(function(c,i){var sl=c.querySelector('.sl'),cnt=c.querySelector('.cnt');
+  function upd(){cnt.textContent=sl.children.length+' طالب'}
+  function add(v){var x=document.createElement('input');x.className='sn';x.placeholder='اسم الطالب '+(sl.children.length+1);x.setAttribute('aria-label',x.placeholder);x.value=v||'';sl.appendChild(x)}
+  list[i].students.forEach(function(s){add(s.name)});upd();
+  c.querySelector('.pl').onclick=function(){add('');upd()};
+  c.querySelector('.mn').onclick=function(){if(sl.children.length>1){sl.removeChild(sl.lastChild);upd()}}})}
+$('gen').onclick=function(){var n=Math.max(2,Math.min(12,+$('nt').value||2)),k=Math.max(1,Math.min(60,+$('ns').value||1)),old=collect(),l=[];
+ for(var i=0;i<n;i++){var t=old[i]||{name:'فريق '+NAMES[i],students:[]},st=t.students.slice(0,k);while(st.length<k)st.push({name:''});l.push({name:t.name,students:st})}teamsForm(l)};
+$('start').onclick=function(){var nt=[];
+ collect().forEach(function(c,i){var old=S.teams[i]||{students:[]},seen={},nm=c.name.trim()||('فريق '+(i+1));
+  var st=c.students.map(function(x){return x.name.trim()}).filter(function(x){if(!x||seen[x])return false;seen[x]=1;return true}).map(function(n){return old.students.filter(function(s){return s.name===n})[0]||{name:n,att:0,cor:0,pts:0}});
+  nt.push({name:nm,students:st,pts:old.pts||0,last:old.last||'',time:old.time||0})});
+ var bad=nt.filter(function(t){return!t.students.length})[0];
+ if(!nt.length||bad){$('smsg').textContent='اكتب اسم طالب واحد على الأقل في فريق: '+(bad?bad.name:'');return}
+ $('smsg').textContent='';
+ var n=Math.max(1,Math.min(QSB.length,+$('nq').value||1));
+ if(S.log.length&&S.tq){if(S.tq.length!==nt.length){dlg('المسابقة بدأت بالفعل، فلا يمكن تغيير عدد الفرق. ابدأ مسابقة جديدة من لوحة التحليل.');return}
+  if(n!==S.n)dlg('المسابقة بدأت بالفعل، فعدد الأسئلة ('+S.n+' لكل فريق) ثابت.')}
+ else mkOrder(n,nt.length);
+ S.teams=nt;cur.t=0;cur.st=0;cur.acc=0;cur.since=null;save();tab('game')};
+
+/* timers */
+function el(){return (cur.acc||0)+(cur.since?(Date.now()-cur.since)/1000:0)}
+function fmt(s){s=Math.floor(s);var m=Math.floor(s/60),x=s%60;return (m<10?'0':'')+m+':'+(x<10?'0':'')+x}
+function resumeT(){if(cur.st===1&&!cur.since)cur.since=Date.now()}
+function pauseT(){if(cur.since){cur.acc=el();cur.since=null}}
+function commitT(){var t=S.teams[cur.t],e=Math.round(el());if(t)t.time=(t.time||0)+e;cur.acc=0;cur.since=null;cur.st=0;return e}
+function tickT(){if($('game').classList.contains('hide'))return;$('tm').textContent=fmt(el());
+ document.querySelectorAll('.tt').forEach(function(x){var i=+x.dataset.i,tt=S.teams[i];if(tt)x.textContent=fmt((tt.time||0)+(i===cur.t?el():0))})}
+setInterval(tickT,250);
+$('tgo').onclick=function(){pauseT();cur.st=2;drawGame()};
+$('startq').onclick=function(){if(S.done||!S.teams[cur.t]||!Q(cur.t,prog(cur.t)))return;if(cur.st===0){cur.acc=0;pick=null;mv=[]}cur.st=1;cur.since=Date.now();drawGame()};
+
+/* game */
+function renderAns(it,live){var A=$('ans');if(!live){A.innerHTML='';return}var q=it.q,h='';
+ if(q.t==='mc'||q.t==='tf'){var pm=it.perm||idx(q.o.length);
+  h='<div class="opts">'+pm.map(function(oi){return '<button class="opt'+(pick===oi?' sel':'')+'" data-i="'+oi+'">'+esc(q.o[oi])+'</button>'}).join('')+'</div>'}
+ else if(q.t==='num'){h='<div style="margin-top:14px"><input id="numin" class="numin" inputmode="numeric" placeholder="اكتب الإجابة هنا" value="'+esc(pick===null?'':String(pick))+'"></div>'}
+ else{h=q.l.map(function(l,i){return '<div class="mrow"><b style="min-width:130px">'+esc(l)+'</b><span>←</span><select data-m="'+i+'"><option value="">اختر...</option>'+it.perm.map(function(ri){return '<option value="'+ri+'"'+(mv[i]===String(ri)?' selected':'')+'>'+esc(q.r[ri])+'</option>'}).join('')+'</select></div>'}).join('')}
+ A.innerHTML=h}
+function lbl(){var t=S.teams[cur.t],s=t&&t.students[+$('stu').value];$('tl').textContent='وقت '+(s?s.name:'الطالب')}
+function drawGame(){
+ if(!S.teams.length||!S.tq){tab('setup');return}
+ var T=S.teams.length,nd=S.teams.filter(function(x,i){return tdone(i)}).length;
+ if(!S.done&&tdone(cur.t)){var nx=nextTeam();if(nx>=0)cur.t=nx}
+ var t=S.teams[cur.t],r=prog(cur.t),it=Q(cur.t,r),live=!!it&&!S.done,st=cur.st,run=live&&st===1;
+ $('prog').textContent=S.done?'انتهت المسابقة، شاهد لوحة التحليل':'أنهى '+nd+' من '+T+' فرق — '+t.name+': السؤال '+Math.min(r+1,S.n)+' من '+S.n;
+ $('tpick').innerHTML=S.teams.map(function(tt,i){var d=tdone(i),lock=d||(st!==0&&i!==cur.t);return '<button class="chip tchip'+(cur.t===i?' on':'')+'" data-t="'+i+'" style="--c:'+COLORS[i%12]+'"'+(lock?' disabled':'')+'>'+(d?'✓ ':'')+esc(tt.name)+' <small>'+Math.min(prog(i),S.n)+'/'+S.n+'</small> <span class="tt" data-i="'+i+'"></span></button>'}).join('');
+ $('stu').innerHTML=t.students.map(function(s,i){var b=s.name===t.last&&t.students.length>1;return '<option value="'+i+'"'+(b?' disabled':'')+'>'+esc(s.name)+(b?' (أجاب في السؤال السابق)':'')+'</option>'}).join('');
+ var f=t.students.findIndex(function(s){return s.name!==t.last});
+ if(cur.svT===cur.t&&cur.sv!==''&&t.students[+cur.sv]&&!(t.students[+cur.sv].name===t.last&&t.students.length>1))$('stu').value=cur.sv;else if(f>=0)$('stu').value=f;
+ $('stu').disabled=st!==0;
+ $('startbox').classList.toggle('hide',run||!live);
+ $('qwrap').classList.toggle('hide',!run);
+ $('tgo').classList.toggle('hide',!run);
+ $('startq').textContent=st===2?'▶ استئناف':'▶ ابدأ';
+ $('stinfo').textContent=live?(st===2?'الوقت متوقف. اضغط «استئناف» ليكمل وقت الطالب ويظهر السؤال.':'الفريق: '+t.name+' — السؤال '+(r+1)+' من '+S.n+'. اختر الطالب، ثم اضغط «ابدأ» ليبدأ وقته ويظهر السؤال.'):'';
+ if(run){$('qtxt').textContent=(it.q.t==='num'||it.q.t==='match'?'⭐ '+TYPES[it.q.t]+'\n':'')+it.q.q+'  ('+it.q.p+(it.q.p===1?' نقطة)':' نقاط)');renderAns(it,true)}
+ else{$('qtxt').textContent='';renderAns(it,false)}
+ $('next').disabled=!run||pick===null;lbl();resumeT();tickT();
+ $('log').innerHTML=S.log.slice(-30).reverse().map(function(l){return '<div>'+esc(l.sn)+' ('+esc((S.teams[l.ti]||{}).name||'')+') — سؤال '+(l.qi+1)+' — '+fmt(l.dt||0)+'</div>'}).join('')||'<small>لا توجد إجابات بعد.</small>'}
+$('stu').onchange=function(){cur.sv=this.value;cur.svT=cur.t;lbl()};
+$('tpick').onclick=function(e){var k=e.target.closest('[data-t]');if(k&&cur.st===0&&!tdone(+k.dataset.t)){cur.t=+k.dataset.t;pick=null;mv=[];drawGame()}};
+$('ans').addEventListener('click',function(e){var b=e.target.closest('[data-i]');if(b){pick=+b.dataset.i;renderAns(Q(cur.t,prog(cur.t)),true);$('next').disabled=false}});
+$('ans').addEventListener('input',function(e){if(e.target.id==='numin'){pick=e.target.value.trim()||null;$('next').disabled=pick===null}});
+$('ans').addEventListener('change',function(e){var m=e.target.dataset.m;if(m===undefined)return;mv[+m]=e.target.value;var it=Q(cur.t,prog(cur.t)),n=it.q.l.length,ok=true;for(var i=0;i<n;i++)if(!mv[i])ok=false;pick=ok?mv.slice(0,n).join(','):null;$('next').disabled=pick===null});
+function finish(){compute();S.done=true;pauseT();cur.st=0;save();clearTimeout(shT);pushSheet();tab('dash');window.scrollTo(0,0)}
+$('next').onclick=function(){var r=prog(cur.t),it=Q(cur.t,r),t=S.teams[cur.t],s=t.students[+$('stu').value];if(!it||!s||pick===null||S.done||cur.st!==1)return;
+ var dt=commitT();s.att++;t.last=s.name;S.log.push({ti:cur.t,sn:s.name,qi:r,b:it.b,ch:pick,dt:dt});pick=null;mv=[];cur.svT=-1;
+ if(S.teams.every(function(x,i){return tdone(i)})){finish();return}
+ if(tdone(cur.t))cur.t=nextTeam();
+ save();drawGame()};
+$('reset').onclick=function(){dlg('سيتم مسح الفرق والنتائج. هل أنت متأكد؟',function(){S={teams:[],log:[],tq:null,n:0,r:0,done:false};save();teamsForm([]);$('gen').onclick();tab('setup')})};
+$('fin').onclick=function(){if(S.done){tab('dash');return}if(!S.log.length){dlg('لا توجد إجابات بعد.');return}
+ dlg('سيتم كشف الإجابات الصحيحة وإنهاء المسابقة وإرسال النتائج للشيت. هل أنت متأكد؟',finish)};
+
+/* dashboard */
+function badge(p){return p>=6?'🥇 ذهبية':p>=4?'🥈 فضية':p>=2?'🥉 برونزية':'—'}
+function tagsOf(a){return a.length?a.map(function(s){return '<span class="tag">'+esc(s.n)+' ('+esc(s.t)+')</span>'}).join(''):'<small>لا أحد</small>'}
+function bars(){var m=Math.max.apply(null,S.teams.map(function(t){return t.pts||0}).concat([1]));
+ return S.teams.map(function(t,i){return '<div class="bar"><span>'+esc(t.name)+'</span><i style="width:'+Math.round((t.pts||0)/m*60)+'%;background:'+COLORS[i%12]+'"></i><b>'+(t.pts||0)+'</b></div>'}).join('')}
+function timePanel(){var rows=S.teams.map(function(t,i){var n=S.log.filter(function(l){return l.ti===i}).length;return '<tr><td><span class="tag" style="border-color:'+COLORS[i%12]+'">'+esc(t.name)+'</span></td><td>'+fmt(t.time||0)+'</td><td>'+n+'</td><td>'+(n?fmt((t.time||0)/n):'—')+'</td></tr>'}).join('');
+ var st={};S.log.forEach(function(l){var k=l.ti+'|'+l.sn;st[k]=st[k]||{n:l.sn,ti:l.ti,c:0,t:0};st[k].c++;st[k].t+=l.dt||0});
+ var sr=Object.keys(st).map(function(k){return st[k]}).sort(function(a,b){return a.t/a.c-b.t/b.c}).map(function(x){return '<tr><td><b>'+esc(x.n)+'</b></td><td>'+esc((S.teams[x.ti]||{}).name||'')+'</td><td>'+x.c+'</td><td>'+fmt(x.t/x.c)+'</td></tr>'}).join('');
+ return '<div class="panel"><h3>الوقت</h3><div class="tw"><table><thead><tr><th>الفريق</th><th>إجمالي وقت التفكير</th><th>الإجابات</th><th>متوسط الإجابة</th></tr></thead><tbody>'+rows+'</tbody></table></div>'+(sr?'<h3 style="margin-top:14px">متوسط وقت كل طالب (الأسرع أولًا)</h3><div class="tw"><table><thead><tr><th>الطالب</th><th>الفريق</th><th>إجابات</th><th>المتوسط</th></tr></thead><tbody>'+sr+'</tbody></table></div>':'')+'</div>'}
+function review(){return '<div class="panel"><h3>مراجعة الأسئلة والإجابات الصحيحة</h3>'+S.teams.map(function(t,ti){
+ return '<h3 style="margin-top:14px"><span class="tag" style="border-color:'+COLORS[ti%12]+'">'+esc(t.name)+'</span></h3>'+idx(S.n).map(function(r){var it=Q(ti,r);if(!it)return '';var l=S.log.filter(function(x){return x.ti===ti&&x.qi===r})[0],q=it.q;
+  return '<div style="border-top:3px solid var(--line);padding:10px 0"><b>'+(r+1)+') '+esc(q.q)+'</b> <small>('+q.p+' نقطة)</small><div style="color:#05713a;font-weight:900;margin:4px 0">الإجابة الصحيحة: '+esc(okText(q))+'</div>'
+  +(l?'<span class="tag">'+(isRight(q,l.ch)?'✅ ':'❌ ')+esc(l.sn)+' اختار: '+esc(ansText(q,l.ch))+'</span>':'<small>لم يُجب</small>')+'</div>'}).join('')}).join('')
+ +'<div class="row" style="margin-top:12px;justify-content:center"><button class="btn" id="again">مسابقة جديدة بأسئلة جديدة</button></div></div>'}
+function drawDash(){
+ if(!S.teams.length){$('dash').innerHTML='<div class="panel">أضف الفرق والطلاب أولًا من صفحة الإعداد.</div>';return}
+ var all=[];S.teams.forEach(function(t,i){t.students.forEach(function(s){all.push({n:s.name,t:t.name,i:i,att:s.att,cor:s.cor||0,pts:s.pts||0})})});
+ var att=all.reduce(function(a,s){return a+s.att},0),none=all.filter(function(s){return!s.att}),part=all.length-none.length,h='';
+ var pc=all.length?Math.round(part/all.length*100):0;
+ if(!S.done){
+  h='<div class="panel"><h3>المسابقة لسه شغالة</h3><p>النتائج والإجابات الصحيحة هتظهر بعد انتهاء كل الجولات أو الضغط على «إنهاء وكشف الإجابات».</p></div>'
+  +'<div class="stats"><div class="stat"><b>'+S.teams.length+'</b>فريق</div><div class="stat"><b>'+all.length+'</b>طالب</div><div class="stat"><b>'+att+'</b>إجابة</div><div class="stat"><b>'+pc+'%</b>نسبة المشاركة</div></div>'
+  +'<div class="panel"><h3>لم يشاركوا بعد</h3>'+tagsOf(none)+'</div>'
+  +'<div class="panel"><h3>مشاركات كل طالب</h3><div class="tw"><table><thead><tr><th>الطالب</th><th>الفريق</th><th>عدد المشاركات</th></tr></thead><tbody>'+all.slice().sort(function(a,b){return b.att-a.att}).map(function(s){return '<tr><td><b>'+esc(s.n)+'</b></td><td><span class="tag" style="border-color:'+COLORS[s.i%12]+'">'+esc(s.t)+'</span></td><td>'+s.att+'</td></tr>'}).join('')+'</tbody></table></div></div>'
+ }else{
+  compute();all=[];S.teams.forEach(function(t,i){t.students.forEach(function(s){all.push({n:s.name,t:t.name,i:i,att:s.att,cor:s.cor||0,pts:s.pts||0})})});
+  var cor=all.reduce(function(a,s){return a+s.cor},0),acc=att?Math.round(cor/att*100):0,weak=all.filter(function(s){return s.att>=2&&s.cor/s.att<.5});
+  var ts=S.teams.slice().sort(function(a,b){return (b.pts||0)-(a.pts||0)||(a.time||0)-(b.time||0)}),win=ts[0],top=all.slice().sort(function(a,b){return b.pts-a.pts})[0];
+  var tie=ts.length>1&&(ts[1].pts||0)===(win.pts||0);
+  var lead=!(win.pts>0)?'لا يوجد متصدر — لم يحصل أي فريق على نقاط':'الفريق المتصدر: <b>'+esc(win.name)+'</b>'+(tie?' (تعادل بالنقاط، وفاز لأنه الأسرع في وقت التفكير)':'')+(top&&top.pts?' — أفضل طالب: <b>'+esc(top.n)+'</b> ('+top.pts+' نقطة)':'');
+  h='<div class="stats"><div class="stat"><b>'+S.teams.length+'</b>فريق</div><div class="stat"><b>'+all.length+'</b>طالب</div><div class="stat"><b>'+att+'</b>إجابة</div><div class="stat"><b>'+acc+'%</b>نسبة الصواب</div><div class="stat"><b>'+pc+'%</b>نسبة المشاركة</div></div>'
+  +'<div class="panel"><h3>ترتيب الفرق</h3>'+bars()+'<p>'+lead+'</p></div>'
+  +'<div class="panel"><h3>لم يشاركوا</h3>'+tagsOf(none)+'<h3 style="margin-top:12px">يحتاجون دعمًا (صوابهم أقل من 50%)</h3>'+tagsOf(weak)+'</div>'
+  +'<div class="panel"><h3>تفاصيل كل طالب</h3><div class="tw"><table><thead><tr><th>الطالب</th><th>الفريق</th><th>محاولات</th><th>صحيحة</th><th>الدقة</th><th>النقاط</th><th>الشارة</th></tr></thead><tbody>'
+  +all.slice().sort(function(a,b){return b.pts-a.pts||b.att-a.att}).map(function(s){return '<tr><td><b>'+esc(s.n)+'</b></td><td><span class="tag" style="border-color:'+COLORS[s.i%12]+'">'+esc(s.t)+'</span></td><td>'+s.att+'</td><td>'+s.cor+'</td><td>'+(s.att?Math.round(s.cor/s.att*100)+'%':'—')+'</td><td>'+s.pts+'</td><td>'+badge(s.pts)+'</td></tr>'}).join('')
+  +'</tbody></table></div><small>الشارات: برونزية من نقطتين، فضية من 4، ذهبية من 6 نقاط.</small></div>'}
+ $('dash').innerHTML=h+timePanel()+(S.done?review():'')+toolsHtml()}
+$('dash').addEventListener('click',function(e){if(e.target.id==='again')dlg('سيتم مسح النتائج وسحب أسئلة جديدة. تقدر تعدّل الفرق والطلاب وعدد الأسئلة قبل البدء. هل أنت متأكد؟',function(){
+ S.log=[];S.r=0;S.done=false;S.tq=null;S.teams.forEach(function(t){t.pts=0;t.last='';t.time=0;t.students.forEach(function(s){s.att=0;s.cor=0;s.pts=0})});pick=null;mv=[];save();teamsForm(S.teams);$('nq').value=S.n||3;tab('setup');window.scrollTo(0,0)})});
+
+/* teacher tools */
+function toolsHtml(){if(!CAP.owner||!S.teams.length)return '';
+ return '<div class="panel"><h3>أدوات المعلم</h3><p style="margin:6px 0 12px">أرسل النتائج لـ Google Sheets أو اطلب تحليلًا لمستوى الطلاب.</p>'
+ +'<div class="row"><button class="btn" id="aib">📊 تحليل الطلاب</button><button class="btn" id="spush2">إرسال النتائج للشيت الآن</button><a class="btn alt" style="text-decoration:none" href="https://docs.google.com/spreadsheets/d/1hl3IKbnzsshHaHimxrCfyPrkPRfTt4aEX8VtRq2aFK4/edit" target="_blank" rel="noopener">فتح الشيت</a></div>'
+ +'<div class="row" style="margin-top:12px"><button class="btn alt" id="x1">تنزيل نتائج الطلاب CSV</button><button class="btn alt" id="x2">تنزيل سجل الإجابات CSV</button><button class="btn alt" id="c1">نسخ النتائج</button><button class="btn alt" id="c2">نسخ سجل الإجابات</button></div>'
+ +'<p id="xmsg" style="font-weight:700"></p><textarea id="tsv" class="hide" readonly style="height:120px;direction:ltr"></textarea>'
+ +'<div id="aiout" class="hide" style="white-space:pre-wrap;line-height:1.9;border:3px solid var(--line);border-radius:18px;background:#fff;padding:14px;margin-top:12px"></div></div>'}
+function rowsStudents(){compute();var out=[['الطالب','الفريق','عدد المحاولات','الإجابات الصحيحة','الدقة %','النقاط','متوسط الوقت (ثانية)','الشارة']],tm={};
+ S.log.forEach(function(l){var k=l.ti+'|'+l.sn;tm[k]=tm[k]||[0,0];tm[k][0]+=l.dt||0;tm[k][1]++});
+ S.teams.forEach(function(t,i){t.students.forEach(function(s){var m=tm[i+'|'+s.name];out.push([s.name,t.name,s.att,s.cor,s.att?Math.round(s.cor/s.att*100):'',s.pts,m?Math.round(m[0]/m[1]):'',badge(s.pts)])})});return out}
+function rowsLog(){var out=[['الطالب','الفريق','رقم السؤال','نوع السؤال','السؤال','الإجابة المختارة','الإجابة الصحيحة','صح؟','الوقت (ثانية)']];
+ S.log.forEach(function(l){var q=QSB[l.b];out.push([l.sn,(S.teams[l.ti]||{}).name||'',l.qi+1,TYPES[q.t],q.q,ansText(q,l.ch),okText(q),isRight(q,l.ch)?'نعم':'لا',l.dt||0])});return out}
+function teamRows(){var r=[['الفريق','النقاط','إجمالي وقت التفكير (ثانية)','عدد الإجابات']];S.teams.forEach(function(t,i){r.push([t.name,t.pts||0,t.time||0,S.log.filter(function(l){return l.ti===i}).length])});return r}
+function toCSV(r){return '\ufeff'+r.map(function(x){return x.map(function(c){return '"'+String(c).replace(/"/g,'""')+'"'}).join(',')}).join('\r\n')}
+function toTSV(r){return r.map(function(x){return x.map(function(c){return String(c).replace(/[\t\r\n]+/g,' ')}).join('\t')}).join('\n')}
+function xmsg(t){var e=$('xmsg');if(e)e.textContent=t}
+function sst(t){var e=$('sst');if(e)e.textContent=t;xmsg(t)}
+function dl(name,rows){var csv=toCSV(rows);
+ if(!CAP.dl){xmsg('التنزيل غير متاح هنا. استخدم زر النسخ.');return copyTxt(toTSV(rows))}
+ CAP.dl.save({filename:name,data:csv}).then(function(){xmsg('تم الحفظ. في Google Sheets: ملف ← استيراد ← تحميل.')}).catch(function(){xmsg('لم يتم الحفظ. جرّب زر النسخ.')})}
+function copyTxt(txt){var b=$('tsv');b.value=txt;b.classList.remove('hide');b.focus();b.select();var ok=false;try{ok=document.execCommand('copy')}catch(e){}
+ xmsg(ok?'تم النسخ. افتح Google Sheets، اضغط على الخلية A1 ثم الصق (Ctrl+V).':'اضغط Ctrl+C على النص الظاهر ثم الصقه في Google Sheets.')}
+function qStats(){var m={};S.log.forEach(function(l){var q=QSB[l.b],o=m[l.b]=m[l.b]||{q:q.q,n:0,c:0,w:{}};o.n++;if(isRight(q,l.ch))o.c++;else{var k=ansText(q,l.ch);o.w[k]=(o.w[k]||0)+1}});
+ return Object.keys(m).map(function(k){var o=m[k];o.wk=Object.keys(o.w).sort(function(x,y){return o.w[y]-o.w[x]})[0];return o})}
+function localAnalysis(){if(!S.log.length)return 'لا توجد إجابات بعد.';
+ var st=rowsStudents().slice(1).map(function(r){return{n:r[0],t:r[1],a:r[2],c:r[3],p:r[5]}}),
+ att=st.reduce(function(x,s){return x+s.a},0),cor=st.reduce(function(x,s){return x+s.c},0),none=st.filter(function(s){return!s.a}),L=[];
+ L.push('📊 ملخص عام','عدد الإجابات '+att+'، ونسبة الصواب '+Math.round(cor/att*100)+'%، وشارك '+(st.length-none.length)+' من '+st.length+' طالب.');
+ var top=st.filter(function(s){return s.p>0}).sort(function(a,b){return b.p-a.p}).slice(0,3);
+ L.push('','🌟 الأعلى نقاطًا',top.length?top.map(function(s){return s.n+' ('+s.t+') — '+s.p+' نقطة'}).join('\n'):'لا أحد حصل على نقاط بعد.');
+ var sup=st.filter(function(s){return s.a>0&&s.c/s.a<.5});
+ L.push('','🤝 يحتاجون دعمًا (صوابهم أقل من 50%)',sup.length?sup.map(function(s){return s.n+' ('+s.t+') — '+s.c+' من '+s.a}).join('\n'):'لا أحد.');
+ if(none.length)L.push('','👀 لم يشاركوا بعد',none.map(function(s){return s.n}).join('، '));
+ var weak=qStats().filter(function(x){return x.c/x.n<.5});
+ L.push('','❗ أسئلة تحتاج مراجعة',weak.length?weak.map(function(x){return '• '+x.q+' — صح '+x.c+' من '+x.n+(x.wk?' (أكثر خطأ شائع: '+x.wk+')':'')}).join('\n'):'أغلب الإجابات كانت صحيحة.');
+ var tm=S.teams.map(function(t){return{n:t.name,p:t.pts||0,tt:t.time||0}}).sort(function(a,b){return b.p-a.p||a.tt-b.tt});
+ L.push('','🏆 الفرق',tm.map(function(t,i){return (i+1)+'. '+t.n+' — '+t.p+' نقطة، وقت '+fmt(t.tt)}).join('\n'));
+ L.push('','💡 مقترحات للحصة القادمة',weak.length?'أعد شرح الأفكار في الأسئلة المذكورة بمثال مرسوم على السبورة، ثم اطرحها بصياغة مختلفة.':'انتقل لأسئلة أصعب أو لأنشطة تطبيقية على العدد الذري والعدد الكتلي.');
+ if(sup.length)L.push('اجعل الطلاب المحتاجين دعمًا يعملون في مجموعات صغيرة مع زملاء أقوى.');
+ if(none.length)L.push('أعطِ الطلاب الذين لم يشاركوا دورًا مبكرًا في المسابقة القادمة.');
+ L.push('','ملاحظة: عدد المحاولات لكل طالب قليل، فاعتبر النتائج إشارة مبدئية.');return L.join('\n')}
+function analyze(){var o=$('aiout');o.classList.remove('hide');
+ if(!CAP.sample){o.textContent=localAnalysis();return}
+ if(!S.log.length){o.textContent='لا توجد إجابات بعد.';return}
+ var st=rowsStudents().slice(1).map(function(r){return{name:r[0],team:r[1],attempts:r[2],correct:r[3],points:r[5],avgSeconds:r[6]}});
+ var qs=qStats().map(function(x){return{question:x.q,attempts:x.n,correct:x.c,wrongAnswers:x.w}});
+ var tm=S.teams.map(function(t){return{team:t.name,points:t.pts||0,totalSeconds:t.time||0}});
+ var pr='أنت محلل تربوي يساعد معلم علوم في المرحلة الابتدائية (تلاميذ عمرهم 9 إلى 10 سنوات). هذه نتائج مسابقة تفاعلية عن تركيب الذرة بصيغة JSON.\nاكتب للمعلم تحليلًا موجزًا بالعربية البسيطة، نصًا عاديًا بدون جداول، بهذه الأقسام: ١) ملخص عام ٢) الطلاب المتميزون ٣) طلاب يحتاجون دعمًا (بالاسم مع سبب كل واحد) ٤) المفاهيم الأضعف والأخطاء الشائعة ٥) أنشطة مقترحة للحصة القادمة.\nاعتمد على الأرقام فقط ولا تخترع بيانات. عدد محاولات كل طالب قليل، فتجنب الأحكام القاطعة.\n\n'+JSON.stringify({students:st,questions:qs,teams:tm});
+ o.textContent='جاري التحليل...';
+ CAP.sample(pr,{cache:false,onText:function(u){o.textContent=u.text}}).then(function(r){o.textContent=r.text}).catch(function(e){o.textContent='تعذر التحليل: '+((e&&e.message)||'حاول مرة أخرى')})}
+$('dash').addEventListener('click',function(e){var id=e.target.id;
+ if(id==='x1')dl('students-results.csv',rowsStudents());else if(id==='x2'){rowsStudents();dl('answers-log.csv',rowsLog())}
+ else if(id==='c1')copyTxt(toTSV(rowsStudents()));else if(id==='c2'){rowsStudents();copyTxt(toTSV(rowsLog()))}
+ else if(id==='aib')analyze();else if(id==='spush2')pushSheet()});
+
+/* google sheets */
+function runName(){var d=new Date(S.runId||Date.now()),p=function(x){return (x<10?'0':'')+x};return 'مسابقة '+d.getFullYear()+'-'+p(d.getMonth()+1)+'-'+p(d.getDate())+' '+p(d.getHours())+'-'+p(d.getMinutes())}
+function pushSheet(){if(!SHEET_URL){sst('الصق رابط Apps Script أولًا.');return}if(!S.teams.length||!S.tq){sst('أنشئ الفرق وابدأ المسابقة أولًا.');return}
+ if(!S.runId)S.runId=Date.now();var payload=JSON.stringify({runId:S.runId,runName:runName(),students:rowsStudents(),log:rowsLog(),teams:teamRows(),done:!!S.done});sst('جاري الإرسال للشيت...');
+ fetch(SHEET_URL,{method:'POST',body:payload}).then(function(r){return r.text()}).then(function(t){var j=null;try{j=JSON.parse(t)}catch(e){}
+  if(j&&j.ok)sst('✅ تم الإرسال للشيت'+(j.sheet?' في ورقة «'+j.sheet+'»':'')+' ('+new Date().toLocaleTimeString('ar-EG')+')');
+  else if(j)sst('❌ الشيت رد بخطأ: '+j.error);
+  else sst('❌ رد غير متوقع من الرابط: '+t.replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').slice(0,150)+' — حدّث كود Apps Script وانشر إصدارًا جديدًا.')})
+ .catch(function(){formPush(payload)})}
+function formPush(payload){sending=true;sst('جاري الإرسال بالطريقة البديلة...');
+ var f=document.createElement('form');f.method='POST';f.action=SHEET_URL;f.target='sheetframe';f.style.display='none';
+ var i=document.createElement('input');i.type='hidden';i.name='payload';i.value=payload;f.appendChild(i);document.body.appendChild(f);
+ try{f.submit()}catch(e){sst('❌ تعذر الإرسال. تأكد من الرابط ومن الاتصال بالإنترنت.')}setTimeout(function(){f.remove()},3000)}
+$('sheetframe').addEventListener('load',function(){if(sending){sending=false;sst('أُرسلت النتائج بالطريقة البديلة ('+new Date().toLocaleTimeString('ar-EG')+'). افتح الشيت وتأكد.')}});
+$('surl').value=SHEET_URL;
+$('surl').onchange=function(){SHEET_URL=$('surl').value.trim();try{localStorage.setItem('tal3eeb_url4',SHEET_URL)}catch(e){}sst(SHEET_URL?'تم حفظ الرابط.':'تم مسح الرابط.')};
+$('spush').onclick=pushSheet;
+
+/* cloud (claude.ai only) */
+function initCaps(){if(!window.claude||!claude.use)return;
+ claude.use('user').then(function(u){if(u&&u.isOwner){CAP.owner=u.isOwner();if(curTab==='dash')tab('dash')}}).catch(function(){});
+ claude.use('downloads').then(function(x){CAP.dl=x}).catch(function(){});
+ claude.use('sample').then(function(x){CAP.sample=x}).catch(function(){});
+ claude.use('db').then(function(d){if(!d)return;CAP.db=d;sv('☁️ متصل بالسحابة');
+  return d.doc('state/main').get().then(function(s){if(!s.exists)return;var r=JSON.parse(s.data().json);
+   if(r&&r.tq&&(r.ts||0)>(S.ts||0)){S=r;if(S.teams.length){teamsForm(S.teams);$('nt').value=S.teams.length;$('nq').value=S.n;tab(['home','content','setup'].indexOf(curTab)>=0?'game':curTab)}sv('☁️ تم تحميل آخر نسخة محفوظة')}
+   else if(S.teams.length)save()})}).catch(function(){sv('💾 محفوظ على الجهاز فقط')})}
+
+/* pages (home + content) */
+var PG={};
+function showPg(id,i){var P=PG[id];i=Math.max(0,Math.min(P.pages.length-1,i));P.i=i;
+ P.pages.forEach(function(p,k){p.classList.toggle('hide',k!==i)});
+ P.nav.querySelectorAll('.dot').forEach(function(d,k){d.classList.toggle('on',k===i)});
+ P.nav.querySelector('.pgp').disabled=i===0;P.nav.querySelector('.pgn').disabled=i===P.pages.length-1;
+ P.nav.querySelector('.pgc').textContent=(i+1).toLocaleString('ar-EG')+' / '+P.pages.length.toLocaleString('ar-EG');window.scrollTo(0,0)}
+function mkPager(id,groups){var sec=$(id),kids=[].slice.call(sec.children);
+ var pages=groups.map(function(g){var d=document.createElement('div');d.className='pg hide';g.forEach(function(i){if(kids[i])d.appendChild(kids[i])});sec.appendChild(d);return d});
+ var nav=document.createElement('div');nav.className='pgnav';
+ nav.innerHTML='<button type="button" class="btn alt pgp">→ السابق</button><div class="row" style="justify-content:center"><div class="dots">'+pages.map(function(_,k){return '<button type="button" class="dot" data-p="'+k+'" aria-label="صفحة '+(k+1)+'"></button>'}).join('')+'</div><span class="pgc"></span></div><button type="button" class="btn pgn">التالي ←</button>';
+ sec.appendChild(nav);PG[id]={pages:pages,nav:nav,i:0};
+ nav.onclick=function(e){var P=PG[id],d=e.target.closest('.dot');if(d)showPg(id,+d.dataset.p);else if(e.target.closest('.pgp'))showPg(id,P.i-1);else if(e.target.closest('.pgn'))showPg(id,P.i+1)};
+ showPg(id,0)}
+mkPager('home',[[0],[1],[2,5],[3,4]]);
+mkPager('content',[[0,1],[2,3],[4,5],[6,7],[8,9]]);
+
+/* init */
+$('nq').max=QSB.length;$('nql').innerHTML='<b>عدد الأسئلة لكل فريق (حتى '+QSB.length+'):</b>';
+if(S.tq&&S.teams.length){teamsForm(S.teams);$('nt').value=S.teams.length;$('nq').value=S.n;tab(S.done?'dash':'game')}else{S={teams:[],log:[],tq:null,n:0,r:0,done:false};$('gen').onclick();tab('home')}
+initCaps();
+
+</script>
+</body>
+</html>
